@@ -1,0 +1,95 @@
+div {
+  box-sizing: border-box;
+}
+
+:root {
+  --widthWhite: 100% / 52;
+  --widthBlack: 100% / 80;
+  --heightWhite: 100vw / 10;
+  --heightBlack: 100vw / 14;
+}
+
+#root {
+  position: relative;
+  margin: 5px; 
+  z-index: -2;
+  
+}
+
+#settings{
+  position: relative;
+}
+
+#statusbar{
+  position: absolute;
+  display: inline-block;
+  left:10px;
+  
+  bottom: 0px;
+}
+
+#showcanvas {
+  position: relative;
+}
+
+#input-selector {
+  margin-top: 2em;
+}
+
+.white-keys > div {
+  display: inline-block;
+  height: calc(var(--heightWhite));
+  width: calc(var(--widthWhite));
+  border: black 1px solid;
+    text-align: center;
+  vertical-align: top;
+  line-height: 250px;
+  z-index: 1;
+  
+}
+
+.black-keys {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.black-keys > div {
+  display: inline-block;
+  height: calc(var(--heightBlack));
+  width: calc(var(--widthBlack));
+  background-color: black;
+  margin-left: calc(var(--widthWhite) - var(--widthBlack));
+  text-align: center;
+  vertical-align: top;
+  line-height: 150px;
+  color: white;
+  z-index: 1;
+}
+
+.black-keys > div:first-child {
+  margin-left: calc(var(--widthWhite) - var(--widthBlack) / 2);
+}
+
+.black-keys > div:nth-child(5n + 2),
+.black-keys > div:nth-child(5n + 4) {
+  margin-left: calc(var(--widthWhite) * 2 - var(--widthBlack));
+}
+
+div.pressed {
+  background-color:  #0000ff;
+}
+
+div.support{
+  background-color: #ffff00;
+}
+
+#slider{
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+#slider.fadeOut{
+  opacity: 0;
+}
