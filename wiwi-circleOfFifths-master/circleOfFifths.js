@@ -442,16 +442,18 @@ buttonSetkey.onclick = function () {
       console.log("WebMidi could not be enabled.", err);
     } else {
       console.log("WebMidi enabled!");
-      //console.log(WebMidi.inputs);
-      //console.log(WebMidi.outputs);
+      console.log(WebMidi.inputs);
+      console.log(WebMidi.outputs);
     }
-    var input = WebMidi.getInputByName("A-Series Keyboard Keyboard");
+    //var input = WebMidi.getInputByName("A-Series Keyboard Keyboard");
+    var input = WebMidi.inputs[1];
     input.addListener('noteon', "all",
       function (e) {
         console.log("Received 'noteon' message (" + e.note.name + e.note.octave + ").");
         var tmpkeynum = 0;
         tmpkeynum = e.note.number % 12;
         aaaa = e.note.number % 12;
+        alert("tmpkeynum=" + tmpkeynum);
 
         if (tmpkeynum === 0) {  //C
           reset();
@@ -571,7 +573,7 @@ buttonSetkey.onclick = function () {
   });
 
 }
-function doubleClicked() {
+/*function doubleClicked() {
   if (show === 1) {
     for (i = 0; i < 12; i++) {
       if (i == highlighted()) {
@@ -674,7 +676,7 @@ function doubleClicked() {
       }
     }
   }
-}
+}*/
 
 function drawOuter(ang) {
   stroke(outCSP);
@@ -1013,7 +1015,7 @@ if (!circle) {  // 隱藏五度圈後
 var el = document.querySelector(`[data-number="${60}"]`);
 
 function reset() {
-  for (let i = 21; i < 109; i++) {
+  for (let i = 48; i < 84; i++) {   // i=21  i<109
     el = document.querySelector(`[data-number="${i}"]`);
     el.innerHTML = "";
   }
@@ -1050,31 +1052,31 @@ function Show_Hidden7(obj) {
 //------------------------------------------------------------------
 function C_normal() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 >= 36 && i * 12 + 0 < 83) {
+    if (i * 12 + 0 >= 48 && i * 12 + 0 < 84) {    //i*12+0>=36   && i*12+0<83
       el = document.querySelector(`[data-number="${i * 12 + 0}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 0 >= 36 && i * 12 + 0 < 83) {
+    if (i * 12 + 0 >= 48 && i * 12 + 0 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 2}"]`);
       Show_Hidden2(el);
     }
-    if (i * 12 + 0 >= 36 && i * 12 + 0 < 83) {
+    if (i * 12 + 0 >= 48 && i * 12 + 0 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 0 >= 36 && i * 12 + 0 < 83) {
+    if (i * 12 + 0 >= 48 && i * 12 + 0 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 5}"]`);
       Show_Hidden4(el);
     }
-    if (i * 12 + 0 >= 36 && i * 12 + 0 < 83) {
+    if (i * 12 + 0 >= 48 && i * 12 + 0 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7}"]`);
       Show_Hidden5(el);
     }
-    if (i * 12 + 0 >= 36 && i * 12 + 0 < 83) {
+    if (i * 12 + 0 >= 48 && i * 12 + 0 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 9}"]`);
       Show_Hidden6(el);
     }
-    if (i * 12 + 0 >= 36 && i * 12 + 0 < 83) {
+    if (i * 12 + 0 >= 48 && i * 12 + 0 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 11}"]`);
       Show_Hidden7(el);
     }
@@ -1083,15 +1085,15 @@ function C_normal() {
 
 function C_med() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 >= 36 && i * 12 + 0 < 83) {
+    if (i * 12 + 0 >= 48 && i * 12 + 0 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 0 >= 36 && i * 12 + 0 < 83) {
+    if (i * 12 + 0 >= 48 && i * 12 + 0 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 0 >= 36 && i * 12 + 0 < 83) {
+    if (i * 12 + 0 >= 48 && i * 12 + 0 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7}"]`);
       Show_Hidden5(el);
     }
@@ -1100,11 +1102,11 @@ function C_med() {
 
 function C_hard() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 >= 36 && i * 12 + 0 < 83) {
+    if (i * 12 + 0 >= 48 && i * 12 + 0 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 0 >= 36 && i * 12 + 0 < 83) {
+    if (i * 12 + 0 >= 48 && i * 12 + 0 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7}"]`);
       Show_Hidden5(el);
     }
@@ -1113,7 +1115,7 @@ function C_hard() {
 
 function C_crazy() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 >= 36 && i * 12 + 0 < 83) {
+    if (i * 12 + 0 >= 48 && i * 12 + 0 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0}"]`);
       Show_Hidden1(el);
     }
@@ -1122,31 +1124,31 @@ function C_crazy() {
 
 function G_normal() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 7 >= 36 && i * 12 + 0 + 7 < 83) {
+    if (i * 12 + 0 + 7 >= 48 && i * 12 + 0 + 7 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 7}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 0 + 7 >= 36 && i * 12 + 0 + 7 < 83) {
+    if (i * 12 + 2 + 7 >= 48 && i * 12 + 2 + 7 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 2 + 7}"]`);
       Show_Hidden2(el);
     }
-    if (i * 12 + 0 + 7 >= 36 && i * 12 + 0 + 7 < 83) {
+    if (i * 12 + 4 + 7 >= 48 && i * 12 + 4 + 7 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4 + 7}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 0 + 7 >= 36 && i * 12 + 0 + 7 < 83) {
+    if (i * 12 + 5 + 7 >= 48 && i * 12 + 0 + 7 < 84 && i * 12 + 5 + 7 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 5 + 7}"]`);
       Show_Hidden4(el);
     }
-    if (i * 12 + 0 + 7 >= 36 && i * 12 + 0 + 7 < 83) {
+    if (i * 12 + 7 + 7 >= 48 && i * 12 + 0 + 7 < 84 && i * 12 + 7 + 7 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 7}"]`);
       Show_Hidden5(el);
     }
-    if (i * 12 + 0 + 7 >= 36 && i * 12 + 0 + 7 < 83) {
+    if (i * 12 + 9 + 7 >= 48 && i * 12 + 0 + 7 < 84 && i * 12 + 9 + 7 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 9 + 7}"]`);
       Show_Hidden6(el);
     }
-    if (i * 12 + 0 + 7 >= 36 && i * 12 + 0 + 7 < 83) {
+    if (i * 12 + 11 + 7 >= 48 && i * 12 + 0 + 7 < 84 && i * 12 + 11 + 7 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 11 + 7}"]`);
       Show_Hidden7(el);
     }
@@ -1155,15 +1157,15 @@ function G_normal() {
 
 function G_med() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 7 >= 36 && i * 12 + 0 + 7 < 83) {
+    if (i * 12 + 0 + 7 >= 48 && i * 12 + 0 + 7 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 7}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 0 + 7 >= 36 && i * 12 + 0 + 7 < 83) {
+    if (i * 12 + 4 + 7 >= 48 && i * 12 + 4 + 7 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4 + 7}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 0 + 7 >= 36 && i * 12 + 0 + 7 < 83) {
+    if (i * 12 + 7 + 7 >= 48 && i * 12 + 7 + 7 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 7}"]`);
       Show_Hidden5(el);
     }
@@ -1172,11 +1174,11 @@ function G_med() {
 
 function G_hard() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 7 >= 36 && i * 12 + 0 + 7 < 83) {
+    if (i * 12 + 0 + 7 >= 48 && i * 12 + 0 + 7 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 7}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 0 + 7 >= 36 && i * 12 + 0 + 7 < 83) {
+    if (i * 12 + 7 + 7 >= 48 && i * 12 + 7 + 7 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 7}"]`);
       Show_Hidden5(el);
     }
@@ -1185,7 +1187,7 @@ function G_hard() {
 
 function G_crazy() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 7 >= 36 && i * 12 + 0 + 7 < 83) {
+    if (i * 12 + 0 + 7 >= 48 && i * 12 + 0 + 7 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 7}"]`);
       Show_Hidden1(el);
     }
@@ -1193,31 +1195,31 @@ function G_crazy() {
 }
 function D_normal() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 2 >= 36 && i * 12 + 0 + 2 < 83) {
+    if (i * 12 + 0 + 2 >= 48 && i * 12 + 0 + 2 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 2}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 0 + 2 >= 36 && i * 12 + 0 + 2 < 83) {
+    if (i * 12 + 2 + 2 >= 48 && i * 12 + 2 + 2 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 2 + 2}"]`);
       Show_Hidden2(el);
     }
-    if (i * 12 + 0 + 2 >= 36 && i * 12 + 0 + 2 < 83) {
+    if (i * 12 + 4 + 2 >= 48 && i * 12 + 4 + 2 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4 + 2}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 0 + 2 >= 36 && i * 12 + 0 + 2 < 83) {
+    if (i * 12 + 5 + 2 >= 48 && i * 12 + 5 + 2 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 5 + 2}"]`);
       Show_Hidden4(el);
     }
-    if (i * 12 + 0 + 2 >= 36 && i * 12 + 0 + 2 < 83) {
+    if (i * 12 + 7 + 2 >= 48 && i * 12 + 7 + 2 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 2}"]`);
       Show_Hidden5(el);
     }
-    if (i * 12 + 0 + 2 >= 36 && i * 12 + 0 + 2 < 83) {
+    if (i * 12 + 9 + 2 >= 48 && i * 12 + 9 + 2 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 9 + 2}"]`);
       Show_Hidden6(el);
     }
-    if (i * 12 + 0 + 2 >= 36 && i * 12 + 0 + 2 < 83) {
+    if (i * 12 + 11 + 2 >= 48 && i * 12 + 0 + 2 < 84 && i * 12 + 11 + 2 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 11 + 2}"]`);
       Show_Hidden7(el);
     }
@@ -1226,15 +1228,15 @@ function D_normal() {
 
 function D_med() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 2 >= 36 && i * 12 + 0 + 2 < 83) {
+    if (i * 12 + 0 + 2 >= 48 && i * 12 + 0 + 2 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 2}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 0 + 2 >= 36 && i * 12 + 0 + 2 < 83) {
+    if (i * 12 + 4 + 2 >= 48 && i * 12 + 4 + 2 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4 + 2}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 0 + 2 >= 36 && i * 12 + 0 + 2 < 83) {
+    if (i * 12 + 7 + 2 >= 48 && i * 12 + 7 + 2 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 2}"]`);
       Show_Hidden5(el);
     }
@@ -1244,11 +1246,11 @@ function D_med() {
 
 function D_hard() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 2 >= 36 && i * 12 + 0 + 2 < 83) {
+    if (i * 12 + 0 + 2 >= 48 && i * 12 + 0 + 2 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 2}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 0 + 2 >= 36 && i * 12 + 0 + 2 < 83) {
+    if (i * 12 + 7 + 2 >= 48 && i * 12 + 7 + 2 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 2}"]`);
       Show_Hidden5(el);
     }
@@ -1258,7 +1260,7 @@ function D_hard() {
 
 function D_crazy() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 2 >= 36 && i * 12 + 0 + 2 < 83) {
+    if (i * 12 + 0 + 2 >= 48 && i * 12 + 0 + 2 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 2}"]`);
       Show_Hidden1(el);
     }
@@ -1268,31 +1270,31 @@ function D_crazy() {
 
 function A_normal() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 9 >= 36 && i * 12 + 0 + 9 < 83) {
+    if (i * 12 + 0 + 9 >= 48 && i * 12 + 0 + 9 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 9}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 0 + 9 >= 36 && i * 12 + 0 + 9 < 83) {
+    if (i * 12 + 2 + 9 >= 48 && i * 12 + 2 + 9 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 2 + 9}"]`);
       Show_Hidden2(el);
     }
-    if (i * 12 + 0 + 9 >= 36 && i * 12 + 0 + 9 < 83) {
+    if (i * 12 + 4 + 9 >= 48 && i * 12 + 4 + 9 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4 + 9}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 0 + 9 >= 36 && i * 12 + 0 + 9 < 83) {
+    if (i * 12 + 5 + 9 >= 48 && i * 12 + 5 + 9 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 5 + 9}"]`);
       Show_Hidden4(el);
     }
-    if (i * 12 + 0 + 9 >= 36 && i * 12 + 0 + 9 < 83) {
+    if (i * 12 + 7 + 9 >= 48 && i * 12 + 7 + 9 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 9}"]`);
       Show_Hidden5(el);
     }
-    if (i * 12 + 0 + 9 >= 36 && i * 12 + 0 + 9 < 83) {
+    if (i * 12 + 9 + 9 >= 48 && i * 12 + 9 + 9 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 9 + 9}"]`);
       Show_Hidden6(el);
     }
-    if (i * 12 + 0 + 9 >= 36 && i * 12 + 0 + 9 < 83) {
+    if (i * 12 + 11 + 9 >= 48 && i * 12 + 11 + 9 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 11 + 9}"]`);
       Show_Hidden7(el);
     }
@@ -1301,15 +1303,15 @@ function A_normal() {
 
 function A_med() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 9 >= 36 && i * 12 + 0 + 9 < 83) {
+    if (i * 12 + 0 + 9 >= 48 && i * 12 + 0 + 9 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 9}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 0 + 9 >= 36 && i * 12 + 0 + 9 < 83) {
+    if (i * 12 + 4 + 9 >= 48 && i * 12 + 4 + 9 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4 + 9}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 0 + 9 >= 36 && i * 12 + 0 + 9 < 83) {
+    if (i * 12 + 7 + 9 >= 48 && i * 12 + 7 + 9 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 9}"]`);
       Show_Hidden5(el);
     }
@@ -1318,11 +1320,11 @@ function A_med() {
 
 function A_hard() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 9 >= 36 && i * 12 + 0 + 9 < 83) {
+    if (i * 12 + 0 + 9 >= 48 && i * 12 + 0 + 9 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 9}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 0 + 9 >= 36 && i * 12 + 0 + 9 < 83) {
+    if (i * 12 + 7 + 9 >= 48 && i * 12 + 7 + 9 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 9}"]`);
       Show_Hidden5(el);
     }
@@ -1331,7 +1333,7 @@ function A_hard() {
 
 function A_crazy() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 9 >= 36 && i * 12 + 0 + 9 < 83) {
+    if (i * 12 + 0 + 9 >= 48 && i * 12 + 0 + 9 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 9}"]`);
       Show_Hidden1(el);
     }
@@ -1340,48 +1342,52 @@ function A_crazy() {
 
 function E_normal() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 4 >= 36 && i * 12 + 0 + 4 < 83) {
+    if (i * 12 + 0 + 4 >= 48 && i * 12 + 0 + 4 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 4}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 0 + 4 >= 36 && i * 12 + 0 + 4 < 83) {
+    if (i * 12 + 2 + 4 >= 48 && i * 12 + 2 + 4 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 2 + 4}"]`);
       Show_Hidden2(el);
     }
-    if (i * 12 + 0 + 4 >= 36 && i * 12 + 0 + 4 < 83) {
+    if (i * 12 + 4 + 4 >= 48 && i * 12 + 4 + 4 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4 + 4}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 0 + 4 >= 36 && i * 12 + 0 + 4 < 83) {
+    if (i * 12 + 5 + 4 >= 48 && i * 12 + 5 + 4 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 5 + 4}"]`);
       Show_Hidden4(el);
     }
-    if (i * 12 + 0 + 4 >= 36 && i * 12 + 0 + 4 < 83) {
+    if (i * 12 + 7 + 4 >= 48 && i * 12 + 7 + 4 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 4}"]`);
       Show_Hidden5(el);
     }
-    if (i * 12 + 0 + 4 >= 36 && i * 12 + 0 + 4 < 83) {
-      el = document.querySelector(`[data-number="${i * 12 + 9 + 4}"]`);
-      Show_Hidden6(el);
+    if (i * 12 + 9 + 4 >= 48 && i * 12 + 0 + 4 < 84) {
+      if (i * 12 + 9 + 4 < 84) {
+        el = document.querySelector(`[data-number="${i * 12 + 9 + 4}"]`);
+        Show_Hidden6(el);
+      }
     }
-    if (i * 12 + 0 + 4 >= 36 && i * 12 + 0 + 4 < 83) {
-      el = document.querySelector(`[data-number="${i * 12 + 11 + 4}"]`);
-      Show_Hidden7(el);
+    if (i * 12 + 11 + 4 >= 48 && i * 12 + 0 + 4 < 84) {
+      if (i * 12 + 11 + 4 < 84) {
+        el = document.querySelector(`[data-number="${i * 12 + 11 + 4}"]`);
+        Show_Hidden7(el);
+      }
     }
   }
 }
 
 function E_med() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 4 >= 36 && i * 12 + 0 + 4 < 83) {
+    if (i * 12 + 0 + 4 >= 48 && i * 12 + 0 + 4 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 4}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 0 + 4 >= 36 && i * 12 + 0 + 4 < 83) {
+    if (i * 12 + 4 + 4 >= 48 && i * 12 + 4 + 4 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4 + 4}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 0 + 4 >= 36 && i * 12 + 0 + 4 < 83) {
+    if (i * 12 + 7 + 4 >= 48 && i * 12 + 7 + 4 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 4}"]`);
       Show_Hidden5(el);
     }
@@ -1390,11 +1396,11 @@ function E_med() {
 
 function E_hard() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 4 >= 36 && i * 12 + 0 + 4 < 83) {
+    if (i * 12 + 0 + 4 >= 48 && i * 12 + 0 + 4 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 4}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 0 + 4 >= 36 && i * 12 + 0 + 4 < 83) {
+    if (i * 12 + 7 + 4 >= 48 && i * 12 + 7 + 4 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 4}"]`);
       Show_Hidden5(el);
     }
@@ -1403,7 +1409,7 @@ function E_hard() {
 
 function E_crazy() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 4 >= 36 && i * 12 + 0 + 4 < 83) {
+    if (i * 12 + 0 + 4 >= 48 && i * 12 + 0 + 4 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 4}"]`);
       Show_Hidden1(el);
     }
@@ -1412,31 +1418,31 @@ function E_crazy() {
 
 function B_normal() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 11 >= 36 && i * 12 + 0 + 11 < 83) {
+    if (i * 12 + 0 + 11 >= 48 && i * 12 + 0 + 11 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 11}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 2 + 11 >= 36 && i * 12 + 2 + 11 < 83) {
+    if (i * 12 + 2 + 11 >= 48 && i * 12 + 2 + 11 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 2 + 11}"]`);
       Show_Hidden2(el);
     }
-    if (i * 12 + 4 + 11 >= 36 && i * 12 + 4 + 11 < 83) {
+    if (i * 12 + 4 + 11 >= 48 && i * 12 + 4 + 11 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4 + 11}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 5 + 11 >= 36 && i * 12 + 5 + 11 < 83) {
+    if (i * 12 + 5 + 11 >= 48 && i * 12 + 5 + 11 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 5 + 11}"]`);
       Show_Hidden4(el);
     }
-    if (i * 12 + 7 + 11 >= 36 && i * 12 + 7 + 11 < 83) {
+    if (i * 12 + 7 + 11 >= 48 && i * 12 + 7 + 11 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 11}"]`);
       Show_Hidden5(el);
     }
-    if (i * 12 + 9 + 11 >= 36 && i * 12 + 9 + 11 < 83) {
+    if (i * 12 + 9 + 11 >= 48 && i * 12 + 9 + 11 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 9 + 11}"]`);
       Show_Hidden6(el);
     }
-    if (i * 12 + 11 + 11 >= 36 && i * 12 + 11 + 11 < 83) {
+    if (i * 12 + 11 + 11 >= 48 && i * 12 + 11 + 11 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 11 + 11}"]`);
       Show_Hidden7(el);
     }
@@ -1445,15 +1451,15 @@ function B_normal() {
 
 function B_med() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 11 >= 36 && i * 12 + 0 + 11 < 83) {
+    if (i * 12 + 0 + 11 >= 48 && i * 12 + 0 + 11 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 11}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 4 + 11 >= 36 && i * 12 + 4 + 11 < 83) {
+    if (i * 12 + 4 + 11 >= 48 && i * 12 + 4 + 11 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4 + 11}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 7 + 11 >= 36 && i * 12 + 7 + 11 < 83) {
+    if (i * 12 + 7 + 11 >= 48 && i * 12 + 7 + 11 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 11}"]`);
       Show_Hidden5(el);
     }
@@ -1462,11 +1468,11 @@ function B_med() {
 
 function B_hard() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 11 >= 36 && i * 12 + 0 + 11 < 83) {
+    if (i * 12 + 0 + 11 >= 48 && i * 12 + 0 + 11 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 11}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 7 + 11 >= 36 && i * 12 + 7 + 11 < 83) {
+    if (i * 12 + 7 + 11 >= 48 && i * 12 + 7 + 11 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 11}"]`);
       Show_Hidden5(el);
     }
@@ -1475,7 +1481,7 @@ function B_hard() {
 
 function B_crazy() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 11 >= 36 && i * 12 + 0 + 11 < 83) {
+    if (i * 12 + 0 + 11 >= 48 && i * 12 + 0 + 11 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 11}"]`);
       Show_Hidden1(el);
     }
@@ -1484,31 +1490,31 @@ function B_crazy() {
 
 function Gb_normal() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 6 >= 36 && i * 12 + 0 + 6 < 83) {
+    if (i * 12 + 0 + 6 >= 48 && i * 12 + 0 + 6 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 6}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 2 + 6 >= 36 && i * 12 + 2 + 6 < 83) {
+    if (i * 12 + 2 + 6 >= 48 && i * 12 + 2 + 6 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 2 + 6}"]`);
       Show_Hidden2(el);
     }
-    if (i * 12 + 4 + 6 >= 36 && i * 12 + 4 + 6 < 83) {
+    if (i * 12 + 4 + 6 >= 48 && i * 12 + 4 + 6 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4 + 6}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 5 + 6 >= 36 && i * 12 + 5 + 6 < 83) {
+    if (i * 12 + 5 + 6 >= 48 && i * 12 + 5 + 6 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 5 + 6}"]`);
       Show_Hidden4(el);
     }
-    if (i * 12 + 7 + 6 >= 36 && i * 12 + 7 + 6 < 83) {
+    if (i * 12 + 7 + 6 >= 48 && i * 12 + 7 + 6 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 6}"]`);
       Show_Hidden5(el);
     }
-    if (i * 12 + 9 + 6 >= 36 && i * 12 + 9 + 6 < 83) {
+    if (i * 12 + 9 + 6 >= 48 && i * 12 + 9 + 6 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 9 + 6}"]`);
       Show_Hidden6(el);
     }
-    if (i * 12 + 11 + 6 >= 36 && i * 12 + 11 + 6 < 83) {
+    if (i * 12 + 11 + 6 >= 48 && i * 12 + 11 + 6 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 11 + 6}"]`);
       Show_Hidden7(el);
     }
@@ -1516,15 +1522,15 @@ function Gb_normal() {
 }
 function Gb_med() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 6 >= 36 && i * 12 + 0 + 6 < 83) {
+    if (i * 12 + 0 + 6 >= 48 && i * 12 + 0 + 6 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 6}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 4 + 6 >= 36 && i * 12 + 4 + 6 < 83) {
+    if (i * 12 + 4 + 6 >= 48 && i * 12 + 4 + 6 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4 + 6}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 7 + 6 >= 36 && i * 12 + 7 + 6 < 83) {
+    if (i * 12 + 7 + 6 >= 48 && i * 12 + 7 + 6 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 6}"]`);
       Show_Hidden5(el);
     }
@@ -1532,11 +1538,11 @@ function Gb_med() {
 }
 function Gb_hard() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 6 >= 36 && i * 12 + 0 + 6 < 83) {
+    if (i * 12 + 0 + 6 >= 48 && i * 12 + 0 + 6 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 6}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 7 + 6 >= 36 && i * 12 + 7 + 6 < 83) {
+    if (i * 12 + 7 + 6 >= 48 && i * 12 + 7 + 6 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 6}"]`);
       Show_Hidden5(el);
     }
@@ -1544,7 +1550,7 @@ function Gb_hard() {
 }
 function Gb_crazy() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 6 >= 36 && i * 12 + 0 + 6 < 83) {
+    if (i * 12 + 0 + 6 >= 48 && i * 12 + 0 + 6 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 6}"]`);
       Show_Hidden1(el);
     }
@@ -1553,31 +1559,31 @@ function Gb_crazy() {
 
 function Db_normal() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 1 >= 36 && i * 12 + 0 + 1 < 83) {
+    if (i * 12 + 0 + 1 >= 48 && i * 12 + 0 + 1 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 1}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 2 + 1 >= 36 && i * 12 + 2 + 1 < 83) {
+    if (i * 12 + 2 + 1 >= 48 && i * 12 + 2 + 1 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 2 + 1}"]`);
       Show_Hidden2(el);
     }
-    if (i * 12 + 4 + 1 >= 36 && i * 12 + 4 + 1 < 83) {
+    if (i * 12 + 4 + 1 >= 48 && i * 12 + 4 + 1 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4 + 1}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 5 + 1 >= 36 && i * 12 + 5 + 1 < 83) {
+    if (i * 12 + 5 + 1 >= 48 && i * 12 + 5 + 1 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 5 + 1}"]`);
       Show_Hidden4(el);
     }
-    if (i * 12 + 7 + 1 >= 36 && i * 12 + 7 + 1 < 83) {
+    if (i * 12 + 7 + 1 >= 48 && i * 12 + 7 + 1 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 1}"]`);
       Show_Hidden5(el);
     }
-    if (i * 12 + 9 + 1 >= 36 && i * 12 + 9 + 1 < 83) {
+    if (i * 12 + 9 + 1 >= 48 && i * 12 + 9 + 1 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 9 + 1}"]`);
       Show_Hidden6(el);
     }
-    if (i * 12 + 11 + 1 >= 36 && i * 12 + 11 + 1 < 83) {
+    if (i * 12 + 11 + 1 >= 48 && i * 12 + 11 + 1 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 11 + 1}"]`);
       Show_Hidden7(el);
     }
@@ -1586,15 +1592,15 @@ function Db_normal() {
 
 function Db_med() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 1 >= 36 && i * 12 + 0 + 1 < 83) {
+    if (i * 12 + 0 + 1 >= 48 && i * 12 + 0 + 1 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 1}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 4 + 1 >= 36 && i * 12 + 4 + 1 < 83) {
+    if (i * 12 + 4 + 1 >= 48 && i * 12 + 4 + 1 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4 + 1}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 7 + 1 >= 36 && i * 12 + 7 + 1 < 83) {
+    if (i * 12 + 7 + 1 >= 48 && i * 12 + 7 + 1 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 1}"]`);
       Show_Hidden5(el);
     }
@@ -1603,11 +1609,11 @@ function Db_med() {
 
 function Db_hard() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 1 >= 36 && i * 12 + 0 + 1 < 83) {
+    if (i * 12 + 0 + 1 >= 48 && i * 12 + 0 + 1 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 1}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 7 + 1 >= 36 && i * 12 + 7 + 1 < 83) {
+    if (i * 12 + 7 + 1 >= 48 && i * 12 + 7 + 1 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 1}"]`);
       Show_Hidden5(el);
     }
@@ -1615,7 +1621,7 @@ function Db_hard() {
 }
 function Db_crazy() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 1 >= 36 && i * 12 + 0 + 1 < 83) {
+    if (i * 12 + 0 + 1 >= 48 && i * 12 + 0 + 1 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 1}"]`);
       Show_Hidden1(el);
     }
@@ -1623,31 +1629,31 @@ function Db_crazy() {
 }
 function Ab_normal() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 8 >= 36 && i * 12 + 0 + 8 < 83) {
+    if (i * 12 + 0 + 8 >= 48 && i * 12 + 0 + 8 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 8}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 2 + 8 >= 36 && i * 12 + 2 + 8 < 83) {
+    if (i * 12 + 2 + 8 >= 48 && i * 12 + 2 + 8 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 2 + 8}"]`);
       Show_Hidden2(el);
     }
-    if (i * 12 + 4 + 8 >= 36 && i * 12 + 4 + 8 < 83) {
+    if (i * 12 + 4 + 8 >= 48 && i * 12 + 4 + 8 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4 + 8}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 5 + 8 >= 36 && i * 12 + 5 + 8 < 83) {
+    if (i * 12 + 5 + 8 >= 48 && i * 12 + 5 + 8 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 5 + 8}"]`);
       Show_Hidden4(el);
     }
-    if (i * 12 + 7 + 8 >= 36 && i * 12 + 7 + 8 < 83) {
+    if (i * 12 + 7 + 8 >= 48 && i * 12 + 7 + 8 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 8}"]`);
       Show_Hidden5(el);
     }
-    if (i * 12 + 9 + 8 >= 36 && i * 12 + 9 + 8 < 83) {
+    if (i * 12 + 9 + 8 >= 48 && i * 12 + 9 + 8 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 9 + 8}"]`);
       Show_Hidden6(el);
     }
-    if (i * 12 + 11 + 8 >= 36 && i * 12 + 11 + 8 < 83) {
+    if (i * 12 + 11 + 8 >= 48 && i * 12 + 11 + 8 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 11 + 8}"]`);
       Show_Hidden7(el);
     }
@@ -1655,15 +1661,15 @@ function Ab_normal() {
 }
 function Ab_med() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 8 >= 36 && i * 12 + 0 + 8 < 83) {
+    if (i * 12 + 0 + 8 >= 48 && i * 12 + 0 + 8 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 8}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 4 + 8 >= 36 && i * 12 + 4 + 8 < 83) {
+    if (i * 12 + 4 + 8 >= 48 && i * 12 + 4 + 8 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4 + 8}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 7 + 8 >= 36 && i * 12 + 7 + 8 < 83) {
+    if (i * 12 + 7 + 8 >= 48 && i * 12 + 7 + 8 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 8}"]`);
       Show_Hidden5(el);
     }
@@ -1672,11 +1678,11 @@ function Ab_med() {
 
 function Ab_hard() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 8 >= 36 && i * 12 + 0 + 8 < 83) {
+    if (i * 12 + 0 + 8 >= 48 && i * 12 + 0 + 8 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 8}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 7 + 8 >= 36 && i * 12 + 7 + 8 < 83) {
+    if (i * 12 + 7 + 8 >= 48 && i * 12 + 7 + 8 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 8}"]`);
       Show_Hidden5(el);
     }
@@ -1685,7 +1691,7 @@ function Ab_hard() {
 
 function Ab_crazy() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 8 >= 36 && i * 12 + 0 + 8 < 83) {
+    if (i * 12 + 0 + 8 >= 48 && i * 12 + 0 + 8 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 8}"]`);
       Show_Hidden1(el);
     }
@@ -1694,31 +1700,31 @@ function Ab_crazy() {
 
 function Eb_normal() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 3 >= 36 && i * 12 + 0 + 3 < 83) {
+    if (i * 12 + 0 + 3 >= 48 && i * 12 + 0 + 3 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 3}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 2 + 3 >= 36 && i * 12 + 2 + 3 < 83) {
+    if (i * 12 + 2 + 3 >= 48 && i * 12 + 2 + 3 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 2 + 3}"]`);
       Show_Hidden2(el);
     }
-    if (i * 12 + 4 + 3 >= 36 && i * 12 + 4 + 3 < 83) {
+    if (i * 12 + 4 + 3 >= 48 && i * 12 + 4 + 3 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4 + 3}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 5 + 3 >= 36 && i * 12 + 5 + 3 < 83) {
+    if (i * 12 + 5 + 3 >= 48 && i * 12 + 5 + 3 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 5 + 3}"]`);
       Show_Hidden4(el);
     }
-    if (i * 12 + 7 + 3 >= 36 && i * 12 + 7 + 3 < 83) {
+    if (i * 12 + 7 + 3 >= 48 && i * 12 + 7 + 3 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 3}"]`);
       Show_Hidden5(el);
     }
-    if (i * 12 + 9 + 3 >= 36 && i * 12 + 9 + 3 < 83) {
+    if (i * 12 + 9 + 3 >= 48 && i * 12 + 9 + 3 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 9 + 3}"]`);
       Show_Hidden6(el);
     }
-    if (i * 12 + 11 + 3 >= 36 && i * 12 + 11 + 3 < 83) {
+    if (i * 12 + 11 + 3 >= 48 && i * 12 + 11 + 3 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 11 + 3}"]`);
       Show_Hidden7(el);
     }
@@ -1726,15 +1732,15 @@ function Eb_normal() {
 }
 function Eb_med() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 3 >= 36 && i * 12 + 0 + 3 < 83) {
+    if (i * 12 + 0 + 3 >= 48 && i * 12 + 0 + 3 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 3}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 4 + 3 >= 36 && i * 12 + 4 + 3 < 83) {
+    if (i * 12 + 4 + 3 >= 48 && i * 12 + 4 + 3 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4 + 3}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 7 + 3 >= 36 && i * 12 + 7 + 3 < 83) {
+    if (i * 12 + 7 + 3 >= 48 && i * 12 + 7 + 3 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 3}"]`);
       Show_Hidden5(el);
     }
@@ -1742,11 +1748,11 @@ function Eb_med() {
 }
 function Eb_hard() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 3 >= 36 && i * 12 + 0 + 3 < 83) {
+    if (i * 12 + 0 + 3 >= 48 && i * 12 + 0 + 3 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 3}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 7 + 3 >= 36 && i * 12 + 7 + 3 < 83) {
+    if (i * 12 + 7 + 3 >= 48 && i * 12 + 7 + 3 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 3}"]`);
       Show_Hidden5(el);
     }
@@ -1754,7 +1760,7 @@ function Eb_hard() {
 }
 function Eb_crazy() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 3 >= 36 && i * 12 + 0 + 3 < 83) {
+    if (i * 12 + 0 + 3 >= 48 && i * 12 + 0 + 3 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 3}"]`);
       Show_Hidden1(el);
     }
@@ -1763,31 +1769,31 @@ function Eb_crazy() {
 
 function Bb_normal() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 10 >= 36 && i * 12 + 0 + 10 < 83) {
+    if (i * 12 + 0 + 10 >= 48 && i * 12 + 0 + 10 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 10}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 2 + 10 >= 36 && i * 12 + 2 + 10 < 83) {
+    if (i * 12 + 2 + 10 >= 48 && i * 12 + 2 + 10 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 2 + 10}"]`);
       Show_Hidden2(el);
     }
-    if (i * 12 + 4 + 10 >= 36 && i * 12 + 4 + 10 < 83) {
+    if (i * 12 + 4 + 10 >= 48 && i * 12 + 4 + 10 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4 + 10}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 5 + 10 >= 36 && i * 12 + 5 + 10 < 83) {
+    if (i * 12 + 5 + 10 >= 48 && i * 12 + 5 + 10 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 5 + 10}"]`);
       Show_Hidden4(el);
     }
-    if (i * 12 + 7 + 10 >= 36 && i * 12 + 7 + 10 < 83) {
+    if (i * 12 + 7 + 10 >= 48 && i * 12 + 7 + 10 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 10}"]`);
       Show_Hidden5(el);
     }
-    if (i * 12 + 9 + 10 >= 36 && i * 12 + 9 + 10 < 83) {
+    if (i * 12 + 9 + 10 >= 48 && i * 12 + 9 + 10 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 9 + 10}"]`);
       Show_Hidden6(el);
     }
-    if (i * 12 + 11 + 10 >= 36 && i * 12 + 11 + 10 < 83) {
+    if (i * 12 + 11 + 10 >= 48 && i * 12 + 11 + 10 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 11 + 10}"]`);
       Show_Hidden7(el);
     }
@@ -1796,15 +1802,15 @@ function Bb_normal() {
 
 function Bb_med() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 10 >= 36 && i * 12 + 0 + 10 < 83) {
+    if (i * 12 + 0 + 10 >= 48 && i * 12 + 0 + 10 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 10}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 4 + 10 >= 36 && i * 12 + 4 + 10 < 83) {
+    if (i * 12 + 4 + 10 >= 48 && i * 12 + 4 + 10 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4 + 10}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 7 + 10 >= 36 && i * 12 + 7 + 10 < 83) {
+    if (i * 12 + 7 + 10 >= 48 && i * 12 + 7 + 10 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 10}"]`);
       Show_Hidden5(el);
     }
@@ -1812,11 +1818,11 @@ function Bb_med() {
 }
 function Bb_hard() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 10 >= 36 && i * 12 + 0 + 10 < 83) {
+    if (i * 12 + 0 + 10 >= 48 && i * 12 + 0 + 10 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 10}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 7 + 10 >= 36 && i * 12 + 7 + 10 < 83) {
+    if (i * 12 + 7 + 10 >= 48 && i * 12 + 7 + 10 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 10}"]`);
       Show_Hidden5(el);
     }
@@ -1824,7 +1830,7 @@ function Bb_hard() {
 }
 function Bb_crazy() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 10 >= 36 && i * 12 + 0 + 10 < 83) {
+    if (i * 12 + 0 + 10 >= 48 && i * 12 + 0 + 10 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 10}"]`);
       Show_Hidden1(el);
     }
@@ -1833,31 +1839,31 @@ function Bb_crazy() {
 
 function F_normal() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 5 >= 36 && i * 12 + 0 + 5 < 83) {
+    if (i * 12 + 0 + 5 >= 48 && i * 12 + 0 + 5 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 5}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 2 + 5 >= 36 && i * 12 + 2 + 5 < 83) {
+    if (i * 12 + 2 + 5 >= 48 && i * 12 + 2 + 5 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 2 + 5}"]`);
       Show_Hidden2(el);
     }
-    if (i * 12 + 4 + 5 >= 36 && i * 12 + 4 + 5 < 83) {
+    if (i * 12 + 4 + 5 >= 48 && i * 12 + 4 + 5 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4 + 5}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 5 + 5 >= 36 && i * 12 + 5 + 5 < 83) {
+    if (i * 12 + 5 + 5 >= 48 && i * 12 + 5 + 5 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 5 + 5}"]`);
       Show_Hidden4(el);
     }
-    if (i * 12 + 7 + 5 >= 36 && i * 12 + 7 + 5 < 83) {
+    if (i * 12 + 7 + 5 >= 48 && i * 12 + 7 + 5 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 5}"]`);
       Show_Hidden5(el);
     }
-    if (i * 12 + 9 + 5 >= 36 && i * 12 + 9 + 5 < 83) {
+    if (i * 12 + 9 + 5 >= 48 && i * 12 + 9 + 5 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 9 + 5}"]`);
       Show_Hidden6(el);
     }
-    if (i * 12 + 11 + 5 >= 36 && i * 12 + 11 + 5 < 83) {
+    if (i * 12 + 11 + 5 >= 48 && i * 12 + 11 + 5 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 11 + 5}"]`);
       Show_Hidden7(el);
     }
@@ -1866,15 +1872,15 @@ function F_normal() {
 
 function F_med() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 5 >= 36 && i * 12 + 0 + 5 < 83) {
+    if (i * 12 + 0 + 5 >= 48 && i * 12 + 0 + 5 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 5}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 4 + 5 >= 36 && i * 12 + 4 + 5 < 83) {
+    if (i * 12 + 4 + 5 >= 48 && i * 12 + 4 + 5 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 4 + 5}"]`);
       Show_Hidden3(el);
     }
-    if (i * 12 + 7 + 5 >= 36 && i * 12 + 7 + 5 < 83) {
+    if (i * 12 + 7 + 5 >= 48 && i * 12 + 7 + 5 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 5}"]`);
       Show_Hidden5(el);
     }
@@ -1883,11 +1889,11 @@ function F_med() {
 
 function F_hard() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 5 >= 36 && i * 12 + 0 + 5 < 83) {
+    if (i * 12 + 0 + 5 >= 48 && i * 12 + 0 + 5 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 5}"]`);
       Show_Hidden1(el);
     }
-    if (i * 12 + 7 + 5 >= 36 && i * 12 + 7 + 5 < 83) {
+    if (i * 12 + 7 + 5 >= 48 && i * 12 + 7 + 5 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 7 + 5}"]`);
       Show_Hidden5(el);
     }
@@ -1896,7 +1902,7 @@ function F_hard() {
 
 function F_crazy() {
   for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 5 >= 36 && i * 12 + 0 + 5 < 83) {
+    if (i * 12 + 0 + 5 >= 48 && i * 12 + 0 + 5 < 84) {
       el = document.querySelector(`[data-number="${i * 12 + 0 + 5}"]`);
       Show_Hidden1(el);
     }
