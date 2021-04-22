@@ -14,10 +14,10 @@
 <!--<script src="https://colxi.info/midi-parser-js/src/main.js"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/webmidi@2.5.2"></script>
 
-<input id="setBPM" type="number" min="50" max="300" value="120"> BPM
+BPM: <input id="setBPM" type="number" min="50" max="300" value="60">
 <button id="resetBPM">Reset BPM</button>
+<button id="setkey">Press key that you want!</button>
 <!-- <button id="transposekey">按下你想移到什麼調性</button> -->
-<button id="setkey">請在你的Midi鍵盤按下你想要的key</button>
 <button id="base64">Play!</button>
 <!-- <button id="stop">Stop</button> -->
 <form>
@@ -89,6 +89,11 @@
     <script language="text/Javascript">
         // MIDIjs.get_audio_status()
     </script>
+
+
+
+
+
 </body>
 
 <script language="JavaScript">
@@ -100,7 +105,7 @@
     let sss;
     let disableP5Webmidi = false;
     var BPM = 50;
-    let changeBPM = false;
+    let changeBPM = true;
     var keytmp;
     var aaaa = 0;
     let keydif = 0;
@@ -108,19 +113,19 @@
     //---------------------------
     var resetBPM = document.getElementById("resetBPM");
     resetBPM.onclick = function () {
-        BPM = 50;
-        divBPM.value = 50;
+        BPM = 60;
+        divBPM.value = 60;
         changeBPM = false;
     }
 
     var divBPM = document.getElementById("setBPM"); //set BPM
-    divBPM.addEventListener("keyup", function (event) {
-        if (event.keyCode === 13) {
-            event.preventDefault();
-            alert("You set BPM = " + divBPM.value);
-            BPM = divBPM.value;
-            changeBPM = true;
-        }
+    divBPM.addEventListener("change", function (event) {
+        //if (event.keyCode === 13) {
+        event.preventDefault();
+        //alert("You set BPM = " + divBPM.value);
+        BPM = divBPM.value;
+        changeBPM = true;
+        //}
     });
 
     /*var divtransposekey = document.getElementById("transposekey");
@@ -128,7 +133,7 @@
         alert("請按下你要移調到哪個key");
         WebMidi.disable();
         WebMidi.enable(function (err) { //listen midi keyboard input 
-
+ 
             if (err) {
                 console.log("WebMidi could not be enabled.", err);
             } else {
@@ -143,7 +148,7 @@
                     WebMidi.disable();
                 }
             );
-
+ 
         });
     }*/
     var imgArray = ["./pic/簡譜/小星星簡譜.png", "./pic/簡譜/王老先生有塊地簡譜.png", "./pic/簡譜/小毛驢簡譜.png", "./pic/簡譜/DoReMi簡譜.png",

@@ -3,10 +3,10 @@ div {
 }
 
 :root {
-  --widthWhite: 100% / 52;
-  --widthBlack: 100% / 80;
-  --heightWhite: 100vw / 10;
-  --heightBlack: 100vw / 14;
+  --widthWhite: 100% / (52 * 0.7);
+  --widthBlack: 100% / (80 * 0.7);
+  --heightWhite: 100vw / (10 * 0.7);
+  --heightBlack: 100vw / (14 * 0.7 );
 }
 
 #root {
@@ -36,6 +36,10 @@ div {
   margin-top: 2em;
 }
 
+.white-keys > div:first-child {
+  margin-left: calc( 275px + var(--widthWhite) - var(--widthBlack) / 2);
+}
+
 .white-keys > div {
   display: inline-block;
   height: calc(var(--heightWhite));
@@ -43,10 +47,12 @@ div {
   border: black 1px solid;
     text-align: center;
   vertical-align: top;
-  line-height: 250px;
-  z-index: 1;
-  
+  line-height: 380px;
+  z-index: 0;
+  background-color:white;
 }
+
+
 
 .black-keys {
   position: absolute;
@@ -65,20 +71,26 @@ div {
   vertical-align: top;
   line-height: 150px;
   color: white;
-  z-index: 1;
+  z-index: 0;
 }
 
 .black-keys > div:first-child {
-  margin-left: calc(var(--widthWhite) - var(--widthBlack) / 2);
+  margin-left: calc( 300px + var(--widthWhite) - var(--widthBlack) / 2);
 }
 
-.black-keys > div:nth-child(5n + 2),
-.black-keys > div:nth-child(5n + 4) {
+.black-keys > div:nth-child(5n + 3),
+.black-keys > div:nth-child(5n + 6) {
   margin-left: calc(var(--widthWhite) * 2 - var(--widthBlack));
 }
 
+/*.white-keys > div:nth-child(5n + 3),
+.white-keys > div:nth-child(5n + 6) {
+  
+} */
+
 div.pressed {
   background-color:  #0000ff;
+  z-index: 1;
 }
 
 div.support{

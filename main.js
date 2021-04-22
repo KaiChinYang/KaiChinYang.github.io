@@ -12,6 +12,7 @@ let KeyboardOctave;
 
 
 //Audio start
+Tone.start();
 var zzz = document.getElementById("sound");
 zzz.onclick = function () {
   Tone.start();
@@ -64,7 +65,8 @@ function onMessage(event) {
   if (channel < 144 || value === 0) {
     // note off
     tmpel.classList.remove("pressed");
-
+    //tmpel.style.display = "inline-block";
+    synth.triggerAttackRelease(newNoteOctave, "4n", now);
 
     //
     if (event.target.name === "A-Series Keyboard Keyboard" || value === 0) {
@@ -72,10 +74,10 @@ function onMessage(event) {
     }
   } else if (channel < 160) {
     // note on
+    //tmpel.style.display = "none";
     tmpel.classList.add("pressed");
-    synth.triggerAttackRelease(newNoteOctave, "8n");
-    // synth.triggerAttack(newNoteOctave, "8n")
 
+    synth.triggerAttack(newNoteOctave, "4n", now)
 
   }
 
@@ -86,7 +88,7 @@ function renderPiano(el) {
   let blackKeys = [];
 
   // 21 - 108 is standard piano key range
-  for (let i = 21; i < 109; i++) {
+  for (let i = 48; i < 84; i++) { //but I only show 48~84
     const index = i % 12;
     const pos = layout[index];
     if (pos[1]) {
@@ -98,6 +100,9 @@ function renderPiano(el) {
   el.innerHTML +=
     `<div class="black-keys">${blackKeys.join("")}</div>` +
     `<div class="white-keys">${whiteKeys.join("")}</div>`;
+
+  //var colorDiv = document.querySelector(`[data-number="${61}"]`);
+  //colorDiv.style.background += 'black';
 }
 
 // list event from midi inputs, index -1 is listening all inputs
@@ -124,6 +129,7 @@ function renderSettings(el, inputs) {
   el.innerHTML = `<select id="${id}">${options.join("")}</select>`;
 
   const select = document.getElementById(id);
+  select.style.display = "none";
   select.addEventListener("change", (event) => {
     const index = Number.parseInt(event.target.value);
     listenEvent(inputs, index);
@@ -186,6 +192,12 @@ async function main() {
     listenEvent(inputs);
     renderPiano(piano);
     renderSettings(settings, inputs);
+    //set backgroundcolor
+    //for (let i = 48; i <= 59; i++) {
+
+    //colorDiv.classList.add("support");
+    //colorDiv.innerHTML = "kk";
+    //}
   } catch (e) {
     alert(e);
   }
@@ -214,10 +226,11 @@ async function main() {
   var buttonBb = document.getElementById("Bbkey");
   var buttonF = document.getElementById("Fkey");
   //var circlecanvas = document.getElementById("circleCanvas");
+
   //reset
   buttonReset.onclick = function () {
     keynum = -1;
-    for (let i = 21; i < 109; i++) {
+    for (let i = 48; i < 84; i++) {
       el = document.querySelector(`[data-number="${i}"]`);
       el.innerHTML = "";
     }
@@ -231,497 +244,27 @@ async function main() {
   // 
 
 
+  /*
+    buttonEasy.onclick = function () {
+      difficulty = 0;
+    }
+    buttonMedium.onclick = function () {
+      difficulty = 5;
+    }
+    buttonHard.onclick = function () {
+      difficulty = 10;
+    }
+    buttonCrazy.onclick = function () {
+      difficulty = 100;
+    }
+  */
 
-  buttonEasy.onclick = function () {
-    difficulty = 0;
-  }
-  buttonMedium.onclick = function () {
-    difficulty = 5;
-  }
-  buttonHard.onclick = function () {
-    difficulty = 10;
-  }
-  buttonCrazy.onclick = function () {
-    difficulty = 100;
-  }
 
-  // C-key support
-  buttonC.onclick = function () {
-    reset();
-    for (let i = 0; i <= 10; i++) {
-      if (i * 12 + 0 >= 36 && i * 12 + 0 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 0}"]`);
-        Show_Hidden1(el);
-      }
-      if (i * 12 + 0 >= 36 && i * 12 + 0 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 2}"]`);
-        Show_Hidden2(el);
-      }
-      if (i * 12 + 0 >= 36 && i * 12 + 0 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 4}"]`);
-        Show_Hidden3(el);
-      }
-      if (i * 12 + 0 >= 36 && i * 12 + 0 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 5}"]`);
-        Show_Hidden4(el);
-      }
-      if (i * 12 + 0 >= 36 && i * 12 + 0 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 7}"]`);
-        Show_Hidden5(el);
-      }
-      if (i * 12 + 0 >= 36 && i * 12 + 0 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 9}"]`);
-        Show_Hidden6(el);
-      }
-      if (i * 12 + 0 >= 36 && i * 12 + 0 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 11}"]`);
-        Show_Hidden7(el);
-      }
-    }
-    return false;
-  }// G-key support
-  buttonG.onclick = function () {
-    reset();
-    for (let i = 0; i <= 10; i++) {
-      if (i * 12 + 0 + 7 >= 36 && i * 12 + 0 + 7 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 0 + 7}"]`);
-        Show_Hidden1(el);
-      }
-      if (i * 12 + 0 + 7 >= 36 && i * 12 + 0 + 7 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 2 + 7}"]`);
-        Show_Hidden2(el);
-      }
-      if (i * 12 + 0 + 7 >= 36 && i * 12 + 0 + 7 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 4 + 7}"]`);
-        Show_Hidden3(el);
-      }
-      if (i * 12 + 0 + 7 >= 36 && i * 12 + 0 + 7 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 5 + 7}"]`);
-        Show_Hidden4(el);
-      }
-      if (i * 12 + 0 + 7 >= 36 && i * 12 + 0 + 7 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 7 + 7}"]`);
-        Show_Hidden5(el);
-      }
-      if (i * 12 + 0 + 7 >= 36 && i * 12 + 0 + 7 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 9 + 7}"]`);
-        Show_Hidden6(el);
-      }
-      if (i * 12 + 0 + 7 >= 36 && i * 12 + 0 + 7 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 11 + 7}"]`);
-        Show_Hidden7(el);
-      }
-    }
-    return false;
-  }
-  //D-key support
-  buttonD.onclick = function () {
-    reset();
-    for (let i = 0; i <= 10; i++) {
-      if (i * 12 + 0 + 2 >= 36 && i * 12 + 0 + 2 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 0 + 2}"]`);
-        Show_Hidden1(el);
-      }
-      if (i * 12 + 0 + 2 >= 36 && i * 12 + 0 + 2 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 2 + 2}"]`);
-        Show_Hidden2(el);
-      }
-      if (i * 12 + 0 + 2 >= 36 && i * 12 + 0 + 2 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 4 + 2}"]`);
-        Show_Hidden3(el);
-      }
-      if (i * 12 + 0 + 2 >= 36 && i * 12 + 0 + 2 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 5 + 2}"]`);
-        Show_Hidden4(el);
-      }
-      if (i * 12 + 0 + 2 >= 36 && i * 12 + 0 + 2 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 7 + 2}"]`);
-        Show_Hidden5(el);
-      }
-      if (i * 12 + 0 + 2 >= 36 && i * 12 + 0 + 2 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 9 + 2}"]`);
-        Show_Hidden6(el);
-      }
-      if (i * 12 + 0 + 2 >= 36 && i * 12 + 0 + 2 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 11 + 2}"]`);
-        Show_Hidden7(el);
-      }
-    }
-    return false;
-  }
-  //A-key support
-  buttonA.onclick = function () {
-    reset();
-    for (let i = 0; i <= 10; i++) {
-      if (i * 12 + 0 + 9 >= 36 && i * 12 + 0 + 9 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 0 + 9}"]`);
-        Show_Hidden1(el);
-      }
-      if (i * 12 + 0 + 9 >= 36 && i * 12 + 0 + 9 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 2 + 9}"]`);
-        Show_Hidden2(el);
-      }
-      if (i * 12 + 0 + 9 >= 36 && i * 12 + 0 + 9 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 4 + 9}"]`);
-        Show_Hidden3(el);
-      }
-      if (i * 12 + 0 + 9 >= 36 && i * 12 + 0 + 9 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 5 + 9}"]`);
-        Show_Hidden4(el);
-      }
-      if (i * 12 + 0 + 9 >= 36 && i * 12 + 0 + 9 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 7 + 9}"]`);
-        Show_Hidden5(el);
-      }
-      if (i * 12 + 0 + 9 >= 36 && i * 12 + 0 + 9 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 9 + 9}"]`);
-        Show_Hidden6(el);
-      }
-      if (i * 12 + 0 + 9 >= 36 && i * 12 + 0 + 9 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 11 + 9}"]`);
-        Show_Hidden7(el);
-      }
-    }
-    return false;
-  }
-  //E-key support
-  buttonE.onclick = function () {
-    reset();
-    for (let i = 0; i <= 10; i++) {
-      if (i * 12 + 0 + 4 >= 36 && i * 12 + 0 + 4 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 0 + 4}"]`);
-        Show_Hidden1(el);
-      }
-      if (i * 12 + 0 + 4 >= 36 && i * 12 + 0 + 4 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 2 + 4}"]`);
-        Show_Hidden2(el);
-      }
-      if (i * 12 + 0 + 4 >= 36 && i * 12 + 0 + 4 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 4 + 4}"]`);
-        Show_Hidden3(el);
-      }
-      if (i * 12 + 0 + 4 >= 36 && i * 12 + 0 + 4 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 5 + 4}"]`);
-        Show_Hidden4(el);
-      }
-      if (i * 12 + 0 + 4 >= 36 && i * 12 + 0 + 4 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 7 + 4}"]`);
-        Show_Hidden5(el);
-      }
-      if (i * 12 + 0 + 4 >= 36 && i * 12 + 0 + 4 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 9 + 4}"]`);
-        Show_Hidden6(el);
-      }
-      if (i * 12 + 0 + 4 >= 36 && i * 12 + 0 + 4 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 11 + 4}"]`);
-        Show_Hidden7(el);
-      }
-    }
-    return false;
-  }
-  //Cb/B key support
-  buttonCb.onclick = function () {
-    reset();
-    for (let i = 0; i <= 10; i++) {
-      if (i * 12 + 0 + 11 >= 36 && i * 12 + 0 + 11 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 0 + 11}"]`);
-        Show_Hidden1(el);
-      }
-      if (i * 12 + 2 + 11 >= 36 && i * 12 + 2 + 11 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 2 + 11}"]`);
-        Show_Hidden2(el);
-      }
-      if (i * 12 + 4 + 11 >= 36 && i * 12 + 4 + 11 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 4 + 11}"]`);
-        Show_Hidden3(el);
-      }
-      if (i * 12 + 5 + 11 >= 36 && i * 12 + 5 + 11 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 5 + 11}"]`);
-        Show_Hidden4(el);
-      }
-      if (i * 12 + 7 + 11 >= 36 && i * 12 + 7 + 11 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 7 + 11}"]`);
-        Show_Hidden5(el);
-      }
-      if (i * 12 + 9 + 11 >= 36 && i * 12 + 9 + 11 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 9 + 11}"]`);
-        Show_Hidden6(el);
-      }
-      if (i * 12 + 11 + 11 >= 36 && i * 12 + 11 + 11 < 83) {
-        el = document.querySelector(`[data-number="${i * 12 + 11 + 11}"]`);
-        Show_Hidden7(el);
-      }
-    }
-    return false;
-  }
-  //Gb/F# key support
-  buttonGb.onclick = function () {
-    reset();
-    for (let i = 0; i <= 10; i++) {
-      if (i * 12 + 0 + 6 >= 21 && i * 12 + 0 + 6 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 0 + 6}"]`);
-        Show_Hidden1(el);
-      }
-      if (i * 12 + 2 + 6 >= 21 && i * 12 + 2 + 6 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 2 + 6}"]`);
-        Show_Hidden2(el);
-      }
-      if (i * 12 + 4 + 6 >= 21 && i * 12 + 4 + 6 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 4 + 6}"]`);
-        Show_Hidden3(el);
-      }
-      if (i * 12 + 5 + 6 >= 21 && i * 12 + 5 + 6 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 5 + 6}"]`);
-        Show_Hidden4(el);
-      }
-      if (i * 12 + 7 + 6 >= 21 && i * 12 + 7 + 6 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 7 + 6}"]`);
-        Show_Hidden5(el);
-      }
-      if (i * 12 + 9 + 6 >= 21 && i * 12 + 9 + 6 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 9 + 6}"]`);
-        Show_Hidden6(el);
-      }
-      if (i * 12 + 11 + 6 >= 21 && i * 12 + 11 + 6 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 11 + 6}"]`);
-        Show_Hidden7(el);
-      }
-    }
-    return false;
-  }
-  //Db/C# key support
-  buttonDb.onclick = function () {
-    reset();
-    for (let i = 0; i <= 10; i++) {
-      if (i * 12 + 0 + 1 >= 21 && i * 12 + 0 + 1 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 0 + 1}"]`);
-        Show_Hidden1(el);
-      }
-      if (i * 12 + 2 + 1 >= 21 && i * 12 + 2 + 1 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 2 + 1}"]`);
-        Show_Hidden2(el);
-      }
-      if (i * 12 + 4 + 1 >= 21 && i * 12 + 4 + 1 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 4 + 1}"]`);
-        Show_Hidden3(el);
-      }
-      if (i * 12 + 5 + 1 >= 21 && i * 12 + 5 + 1 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 5 + 1}"]`);
-        Show_Hidden4(el);
-      }
-      if (i * 12 + 7 + 1 >= 21 && i * 12 + 7 + 1 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 7 + 1}"]`);
-        Show_Hidden5(el);
-      }
-      if (i * 12 + 9 + 1 >= 21 && i * 12 + 9 + 1 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 9 + 1}"]`);
-        Show_Hidden6(el);
-      }
-      if (i * 12 + 11 + 1 >= 21 && i * 12 + 11 + 1 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 11 + 1}"]`);
-        Show_Hidden7(el);
-      }
-    }
-    return false;
-  }
-  //Ab key support
-  buttonAb.onclick = function () {
-    reset();
-    for (let i = 0; i <= 10; i++) {
-      if (i * 12 + 0 + 8 >= 21 && i * 12 + 0 + 8 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 0 + 8}"]`);
-        Show_Hidden1(el);
-      }
-      if (i * 12 + 2 + 8 >= 21 && i * 12 + 2 + 8 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 2 + 8}"]`);
-        Show_Hidden2(el);
-      }
-      if (i * 12 + 4 + 8 >= 21 && i * 12 + 4 + 8 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 4 + 8}"]`);
-        Show_Hidden3(el);
-      }
-      if (i * 12 + 5 + 8 >= 21 && i * 12 + 5 + 8 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 5 + 8}"]`);
-        Show_Hidden4(el);
-      }
-      if (i * 12 + 7 + 8 >= 21 && i * 12 + 7 + 8 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 7 + 8}"]`);
-        Show_Hidden5(el);
-      }
-      if (i * 12 + 9 + 8 >= 21 && i * 12 + 9 + 8 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 9 + 8}"]`);
-        Show_Hidden6(el);
-      }
-      if (i * 12 + 11 + 8 >= 21 && i * 12 + 11 + 8 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 11 + 8}"]`);
-        Show_Hidden7(el);
-      }
-    }
-    return false;
-  }
-  //Eb key support
-  buttonEb.onclick = function () {
-    reset();
-    for (let i = 0; i <= 10; i++) {
-      if (i * 12 + 0 + 3 >= 21 && i * 12 + 0 + 3 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 0 + 3}"]`);
-        Show_Hidden1(el);
-      }
-      if (i * 12 + 2 + 3 >= 21 && i * 12 + 2 + 3 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 2 + 3}"]`);
-        Show_Hidden2(el);
-      }
-      if (i * 12 + 4 + 3 >= 21 && i * 12 + 4 + 3 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 4 + 3}"]`);
-        Show_Hidden3(el);
-      }
-      if (i * 12 + 5 + 3 >= 21 && i * 12 + 5 + 3 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 5 + 3}"]`);
-        Show_Hidden4(el);
-      }
-      if (i * 12 + 7 + 3 >= 21 && i * 12 + 7 + 3 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 7 + 3}"]`);
-        Show_Hidden5(el);
-      }
-      if (i * 12 + 9 + 3 >= 21 && i * 12 + 9 + 3 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 9 + 3}"]`);
-        Show_Hidden6(el);
-      }
-      if (i * 12 + 11 + 3 >= 21 && i * 12 + 11 + 3 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 11 + 3}"]`);
-        Show_Hidden7(el);
-      }
-    }
-    return false;
-  }
-  //Bb key support
-  buttonBb.onclick = function () {
-    reset();
-    for (let i = 0; i <= 10; i++) {
-      if (i * 12 + 0 + 10 >= 21 && i * 12 + 0 + 10 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 0 + 10}"]`);
-        Show_Hidden1(el);
-      }
-      if (i * 12 + 2 + 10 >= 21 && i * 12 + 2 + 10 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 2 + 10}"]`);
-        Show_Hidden2(el);
-      }
-      if (i * 12 + 4 + 10 >= 21 && i * 12 + 4 + 10 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 4 + 10}"]`);
-        Show_Hidden3(el);
-      }
-      if (i * 12 + 5 + 10 >= 21 && i * 12 + 5 + 10 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 5 + 10}"]`);
-        Show_Hidden4(el);
-      }
-      if (i * 12 + 7 + 10 >= 21 && i * 12 + 7 + 10 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 7 + 10}"]`);
-        Show_Hidden5(el);
-      }
-      if (i * 12 + 9 + 10 >= 21 && i * 12 + 9 + 10 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 9 + 10}"]`);
-        Show_Hidden6(el);
-      }
-      if (i * 12 + 11 + 10 >= 21 && i * 12 + 11 + 10 < 109) {
-        el = document.querySelector(`[data-number="${i * 12 + 11 + 10}"]`);
-        Show_Hidden7(el);
-      }
-    }
-    return false;
-  }
-  //F key support
-  buttonF.onclick = function () {
-    reset();
-    if (difficulty === 0) {
-      F_normal();
-    }
-    if (difficulty === 5) {
-      F_mid();
-    }
-    if (difficulty === 10) {
-      F_hard();
-    }
-    if (difficulty === 100) {
-      F_crazy();
-    }
-    return false;
-  }
+
 }
-
-function F_normal() {
-  for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 5 >= 21 && i * 12 + 0 + 5 < 109) {
-      el = document.querySelector(`[data-number="${i * 12 + 0 + 5}"]`);
-      Show_Hidden1(el);
-    }
-    if (i * 12 + 2 + 5 >= 21 && i * 12 + 2 + 5 < 109) {
-      el = document.querySelector(`[data-number="${i * 12 + 2 + 5}"]`);
-      Show_Hidden2(el);
-    }
-    if (i * 12 + 4 + 5 >= 21 && i * 12 + 4 + 5 < 109) {
-      el = document.querySelector(`[data-number="${i * 12 + 4 + 5}"]`);
-      Show_Hidden3(el);
-    }
-    if (i * 12 + 5 + 5 >= 21 && i * 12 + 5 + 5 < 109) {
-      el = document.querySelector(`[data-number="${i * 12 + 5 + 5}"]`);
-      Show_Hidden4(el);
-    }
-    if (i * 12 + 7 + 5 >= 21 && i * 12 + 7 + 5 < 109) {
-      el = document.querySelector(`[data-number="${i * 12 + 7 + 5}"]`);
-      Show_Hidden5(el);
-    }
-    if (i * 12 + 9 + 5 >= 21 && i * 12 + 9 + 5 < 109) {
-      el = document.querySelector(`[data-number="${i * 12 + 9 + 5}"]`);
-      Show_Hidden6(el);
-    }
-    if (i * 12 + 11 + 5 >= 21 && i * 12 + 11 + 5 < 109) {
-      el = document.querySelector(`[data-number="${i * 12 + 11 + 5}"]`);
-      Show_Hidden7(el);
-    }
-  }
-}
-
-function F_mid() {
-  for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 5 >= 36 && i * 12 + 0 + 5 < 83) {
-      el = document.querySelector(`[data-number="${i * 12 + 0 + 5}"]`);
-      Show_Hidden1(el);
-    }
-    if (i * 12 + 4 + 5 >= 36 && i * 12 + 4 + 5 < 83) {
-      el = document.querySelector(`[data-number="${i * 12 + 4 + 5}"]`);
-      Show_Hidden3(el);
-    }
-    if (i * 12 + 7 + 5 >= 36 && i * 12 + 7 + 5 < 83) {
-      el = document.querySelector(`[data-number="${i * 12 + 7 + 5}"]`);
-      Show_Hidden5(el);
-    }
-  }
-}
-
-function F_hard() {
-  for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 5 >= 36 && i * 12 + 0 + 5 < 83) {
-      el = document.querySelector(`[data-number="${i * 12 + 0 + 5}"]`);
-      Show_Hidden1(el);
-    }
-    if (i * 12 + 7 + 5 >= 36 && i * 12 + 7 + 5 < 83) {
-      el = document.querySelector(`[data-number="${i * 12 + 7 + 5}"]`);
-      Show_Hidden5(el);
-    }
-  }
-}
-
-function F_crazy() {
-  for (let i = 0; i <= 10; i++) {
-    if (i * 12 + 0 + 5 >= 36 && i * 12 + 0 + 5 < 83) {
-      el = document.querySelector(`[data-number="${i * 12 + 0 + 5}"]`);
-      Show_Hidden1(el);
-    }
-  }
-}
-
 
 
 main();
+
 
 
