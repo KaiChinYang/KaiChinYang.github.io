@@ -12,7 +12,7 @@ let KeyboardOctave;
 
 
 //Audio start
-Tone.start();
+
 var zzz = document.getElementById("sound");
 zzz.onclick = function () {
   Tone.start();
