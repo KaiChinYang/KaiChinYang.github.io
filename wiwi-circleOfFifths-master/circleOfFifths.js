@@ -434,7 +434,8 @@ function highlighted() {
 var statustext = document.getElementById("statusbar");
 
 buttonSetkey.onclick = function () {
-  alert("請按下你要的key");
+  var selecttext = document.getElementById("selecttext");
+  selecttext.innerHTML = "Press key you want!";
   WebMidi.disable();
   WebMidi.enable(function (err) { //listen midi keyboard input 
 
@@ -453,11 +454,13 @@ buttonSetkey.onclick = function () {
         var tmpkeynum = 0;
         tmpkeynum = e.note.number % 12;
         aaaa = e.note.number % 12;
-        alert("tmpkeynum=" + tmpkeynum);
+        //alert("tmpkeynum=" + tmpkeynum);
+
 
         if (tmpkeynum === 0) {  //C
           reset();
           keynum = 0;
+          selecttext.innerHTML = "Key Status now : C大調-Ａ小調";
           if (difficult === 0) { C_normal(); statustext.innerHTML = "Support Status: C大調-Ａ小調 全顯示"; }
           if (difficult === 5) { C_med(); statustext.innerHTML = "Support Status: C大調-Ａ小調 顯示較少"; }
           if (difficult === 10) { C_hard(); statustext.innerHTML = "Support Status: C大調-Ａ小調 顯示 1 & 5"; }
@@ -467,6 +470,7 @@ buttonSetkey.onclick = function () {
         if (tmpkeynum === 7) {  //G
           reset();
           keynum = 1;
+          selecttext.innerHTML = "Key Status now : G大調-E小調";
           if (difficult === 0) { G_normal(); statustext.innerHTML = "Support Status: G大調-E小調 全顯示"; }
           if (difficult === 5) { G_med(); statustext.innerHTML = "Support Status: G大調-E小調 顯示較少"; }
           if (difficult === 10) { G_hard(); statustext.innerHTML = "Support Status: G大調-E小調 顯示 1 & 5"; }
@@ -476,6 +480,7 @@ buttonSetkey.onclick = function () {
         if (tmpkeynum === 2) {  //D
           reset();
           keynum = 2;
+          selecttext.innerHTML = "Key Status now : D大調-B小調";
           if (difficult === 0) { D_normal(); statustext.innerHTML = "Support Status: D大調-B小調 全顯示"; }
           if (difficult === 5) { D_med(); statustext.innerHTML = "Support Status: D大調-B小調 顯示較少"; }
           if (difficult === 10) { D_hard(); statustext.innerHTML = "Support Status: D大調-B小調 顯示 1 & 5"; }
@@ -485,6 +490,7 @@ buttonSetkey.onclick = function () {
         if (tmpkeynum === 9) {  //A
           reset();
           keynum = 3;
+          selecttext.innerHTML = "Key Status now : A大調-F#小調";
           if (difficult === 0) { A_normal(); statustext.innerHTML = "Support Status: A大調-F#小調 全顯示"; }
           if (difficult === 5) { A_med(); statustext.innerHTML = "Support Status: A大調-F#小調 顯示較少"; }
           if (difficult === 10) { A_hard(); statustext.innerHTML = "Support Status: A大調-F#小調 顯示 1 & 5"; }
@@ -494,6 +500,7 @@ buttonSetkey.onclick = function () {
         if (tmpkeynum === 4) {  //E
           reset();
           keynum = 4;
+          selecttext.innerHTML = "Key Status now : E大調-C#小調";
           if (difficult === 0) { E_normal(); statustext.innerHTML = "Support Status: E大調-C#小調 全顯示"; }
           if (difficult === 5) { E_med(); statustext.innerHTML = "Support Status: E大調-C#小調 顯示較少"; }
           if (difficult === 10) { E_hard(); statustext.innerHTML = "Support Status: E大調-C#小調 顯示 1 & 5"; }
@@ -503,6 +510,7 @@ buttonSetkey.onclick = function () {
         if (tmpkeynum === 11) {  // Cb/B
           reset();
           keynum = 5;
+          selecttext.innerHTML = "Key Status now : Cb/B大調-Ab/G#小調";
           if (difficult === 0) { B_normal(); statustext.innerHTML = "Support Status: Cb/B大調-Ab/G#小調 全顯示"; }
           if (difficult === 5) { B_med(); statustext.innerHTML = "Support Status: Cb/B大調-Ab/G#小調 顯示較少"; }
           if (difficult === 10) { B_hard(); statustext.innerHTML = "Support Status: Cb/B大調-Ab/G#小調 顯示 1 & 5"; }
@@ -512,6 +520,7 @@ buttonSetkey.onclick = function () {
         if (tmpkeynum === 6) {  // Gb/F#
           reset();
           keynum = 6;
+          selecttext.innerHTML = "Key Status now : Gb/F#大調-Eb/D#小調";
           if (difficult === 0) { Gb_normal(); statustext.innerHTML = "Support Status: Gb/F#大調-Eb/D#小調 全顯示"; }
           if (difficult === 5) { Gb_med(); statustext.innerHTML = "Support Status: Gb/F#大調-Eb/D#小調 顯示較少"; }
           if (difficult === 10) { Gb_hard(); statustext.innerHTML = "Support Status: Gb/F#大調-Eb/D#小調 顯示 1 & 5"; }
@@ -521,6 +530,7 @@ buttonSetkey.onclick = function () {
         if (tmpkeynum === 1) {  // Db/C#
           reset();
           keynum = 7;
+          selecttext.innerHTML = "Key Status now : Db/C#大調-Bb/A#小調";
           if (difficult === 0) { Db_normal(); statustext.innerHTML = "Support Status: Db/C#大調-Bb/A#小調 全顯示"; }
           if (difficult === 5) { Db_med(); statustext.innerHTML = "Support Status: Db/C#大調-Bb/A#小調 顯示較少"; }
           if (difficult === 10) { Db_hard(); statustext.innerHTML = "Support Status: Db/C#大調-Bb/A#小調 顯示 1 & 5"; }
@@ -530,6 +540,7 @@ buttonSetkey.onclick = function () {
         if (tmpkeynum === 8) {  //Ab
           reset();
           keynum = 8;
+          selecttext.innerHTML = "Key Status now : Ab大調-F小調";
           if (difficult === 0) { Ab_normal(); statustext.innerHTML = "Support Status: Ab大調-F小調 全顯示"; }
           if (difficult === 5) { Ab_med(); statustext.innerHTML = "Support Status: Ab大調-F小調 顯示較少"; }
           if (difficult === 10) { Ab_hard(); statustext.innerHTML = "Support Status: Ab大調-F小調 顯示 1 & 5"; }
@@ -539,6 +550,7 @@ buttonSetkey.onclick = function () {
         if (tmpkeynum === 3) {  //Eb
           reset();
           keynum = 9;
+          selecttext.innerHTML = "Key Status now : Eb大調-C小調";
           if (difficult === 0) { Eb_normal(); statustext.innerHTML = "Support Status: Eb大調-C小調 全顯示"; }
           if (difficult === 5) { Eb_med(); statustext.innerHTML = "Support Status: Eb大調-C小調 顯示較少"; }
           if (difficult === 10) { Eb_hard(); statustext.innerHTML = "Support Status: Eb大調-C小調 顯示 1 & 5"; }
@@ -548,6 +560,7 @@ buttonSetkey.onclick = function () {
         if (tmpkeynum === 10) { //Bb
           reset();
           keynum = 10;
+          selecttext.innerHTML = "Key Status now : Bb大調-G小調";
           if (difficult === 0) { Bb_normal(); statustext.innerHTML = "Support Status: Bb大調-G小調 全顯示"; }
           if (difficult === 5) { Bb_med(); statustext.innerHTML = "Support Status: Bb大調-G小調 顯示較少"; }
           if (difficult === 10) { Bb_hard(); statustext.innerHTML = "Support Status: Bb大調-G小調 顯示 1 & 5"; }
@@ -557,6 +570,7 @@ buttonSetkey.onclick = function () {
         if (tmpkeynum === 5) { //F key
           reset();
           keynum = 11;
+          selecttext.innerHTML = "Key Status now : F大調-D小調";
           if (difficult === 0) { F_normal(); statustext.innerHTML = "Support Status: F大調-D小調 全顯示"; }
           if (difficult === 5) { F_med(); statustext.innerHTML = "Support Status: F大調-D小調 顯示較少"; }
           if (difficult === 10) { F_hard(); statustext.innerHTML = "Support Status: F大調-D小調 顯示 1 & 5"; }
