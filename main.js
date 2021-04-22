@@ -4,15 +4,46 @@
 let notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 let octaves = ["0", "1", "2", "3", "4", "5", "6", "7"];
 
-const synth = new Tone.Synth().toDestination();
+//const synth = new Tone.Synth().toDestination();
 const now = Tone.now()
 let newNoteOctave;
 let KeyboardNote;
 let KeyboardOctave;
 
+var piano = SampleLibrary.load({
+  instruments: "saxophone"
+});
+
+piano.release = .5;
+piano.toMaster();
+/*
+//load samples
+var samples = SampleLibrary.load({
+  instruments: ['piano', 'bass-electric', 'bassoon', 'cello', 'clarinet', 'contrabass', 'flute', 'french-horn', 'guitar-acoustic', 'guitar-electric', 'guitar-nylon', 'harmonium', 'harp', 'organ', 'saxophone', 'trombone', 'trumpet', 'tuba', 'violin', 'xylophone'],
+  baseUrl: "./samples/"
+})*/
+
+//
+/*
+var current;
+Tone.Buffer.on('load', function () {
+  // loop through instruments and set release, connect to master output
+  for (var property in samples) {
+    if (samples.hasOwnProperty(property)) {
+      console.log(samples[property])
+      samples[property].release = .5;
+      samples[property].toMaster();
+    }
+  }
+  current = samples['piano'];
+})
+
+Tone.Buffer.on('error', function () {
+  document.querySelector("#loading").innerHTML = "I'm sorry, there has been an error loading the samples. This demo works best on on the most up-to-date version of Chrome.";
+})*/
+
 
 //Audio start
-
 var zzz = document.getElementById("sound");
 zzz.onclick = function () {
   Tone.start();
@@ -66,8 +97,8 @@ function onMessage(event) {
     // note off
     tmpel.classList.remove("pressed");
     //tmpel.style.display = "inline-block";
-    synth.triggerAttackRelease(newNoteOctave, "4n", now);
-
+    //synth.triggerRelease(newNoteOctave, "4n", now);
+    piano.triggerRelease(newNoteOctave);
     //
     if (event.target.name === "A-Series Keyboard Keyboard" || value === 0) {
       //如果是midi out(playback) 力度大小(value)=0 而且會沒有midi off
@@ -77,7 +108,9 @@ function onMessage(event) {
     //tmpel.style.display = "none";
     tmpel.classList.add("pressed");
 
-    synth.triggerAttack(newNoteOctave, "4n", now)
+    //synth.triggerAttack(newNoteOctave, "8n", now)
+    piano.triggerAttack(newNoteOctave);
+
 
   }
 

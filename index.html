@@ -9,19 +9,22 @@
 </head>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.13/Tone.js"></script>
+<script type="text/javascript" src="./lib/Tonejs-Instruments.js"></script>
 <script type="text/javascript" src="https://unpkg.com/@tonejs/midi"></script>
 <script type='text/javascript' src='//www.midijs.net/lib/midi.js'></script>
 <!--<script src="https://colxi.info/midi-parser-js/src/main.js"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/webmidi@2.5.2"></script>
 
-BPM: <input id="setBPM" type="number" min="50" max="300" value="60">
+<font>BPM:</font> <input id="setBPM" type="number" min="50" max="300" value="60">
 <button id="resetBPM">Reset BPM</button>
 <button id="setkey">Press key that you want!</button>
 <!-- <button id="transposekey">按下你想移到什麼調性</button> -->
 <button id="base64">Play!</button>
+<font id="selecttext"></font>
 <!-- <button id="stop">Stop</button> -->
 <form>
     <select id="mySelect">
+        <option value=-1>樂譜列表</option>
         <option value=0>小星星</option>
         <option value=1>王老先生有塊地</option>
         <option value=2>小毛驢</option>
@@ -34,6 +37,8 @@ BPM: <input id="setBPM" type="number" min="50" max="300" value="60">
         <option value=9>望春風</option>
     </select>
 </form>
+
+
 
 
 
