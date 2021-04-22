@@ -11,8 +11,7 @@ let KeyboardNote;
 let KeyboardOctave;
 
 var piano = SampleLibrary.load({
-  instruments: "saxophone",
-  baseUrl: "./samples/"
+  instruments: "saxophone"
 });
 
 piano.release = .5;
