@@ -38,14 +38,35 @@
     </select>
 </form>
 
-
-
-
-
+<form>
+    <select id="SampleSelect">
+        <option value='piano'>Piano</option>
+        <option value='bass-electric'>Bass-Electric</option>
+        <option value='bassoon'>Bassoon</option>
+        <option value='cello'>Cello</option>
+        <option value='clarinet'>Clarinet</option>
+        <option value='contrabass'>Contrabass</option>
+        <option value='flute'>Flute</option>
+        <option value='french-horn'>French-Horn</option>
+        <option value='guitar-acoustic'>Guitar-Acoustic</option>
+        <option value='guitar-electric'>Guitar-Electric</option>
+        <option value='guitar-nylon'>Guitar-Nylon</option>
+        <option value='harmonium'>Harmonium</option>
+        <option value='harp'>Harp</option>
+        <option value='organ'>Organ</option>
+        <option value='saxophone'>Saxophone</option>
+        <option value='trombone'>Trombone</option>
+        <option value='trumpet'>Trumpet</option>
+        <option value='tuba'>Tuba</option>
+        <option value='violin'>Violin</option>
+        <option value='xylophone'>Xylophone</option>
+    </select>
+</form>
 
 
 
 <!-- <input type="file" id="filereader"> -->
+
 
 <body>
     <div id="root">
@@ -78,19 +99,17 @@
     <button id="Fkey" style="display:none">F</button>
     <div id="callback"></div>
 
-    <img id="slider" src="" style=" position:absolute; width:1000px; left:300px">
+
     </div>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
     <!--<script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.sound.min.js"></script> -->
     <script type='text/javascript' src="./lib/p5.play.js"></script>
-
-    <script src="./main.js" type='text/javascript' data=difficulty></script>
     <script id="abc" src="./wiwi-circleOfFifths-master/circleOfFifths.js" type='text/javascript' data='texxx'></script>
     <script src="./MidiTone.js" type='text/javascript'></script>
     <!--<script src="./sketch.js" type='text/javascript'></script>-->
-
+    <script src="./main.js" type='text/javascript' data=difficulty></script>
     <script language="text/Javascript">
         // MIDIjs.get_audio_status()
     </script>
@@ -101,6 +120,7 @@
 
 </body>
 
+<img id="slider" src="" style=" position:absolute; width:1000px; left:300px">
 <script language="JavaScript">
     //放些全域變數 
     var show = 0;
@@ -342,5 +362,7 @@
         //});
     }
 </script>
+<footer>
+</footer>
 
 </html>

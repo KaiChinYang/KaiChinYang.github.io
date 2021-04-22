@@ -10,22 +10,46 @@ let newNoteOctave;
 let KeyboardNote;
 let KeyboardOctave;
 
-var piano = SampleLibrary.load({
-  instruments: "saxophone"
-});
-
-piano.release = .5;
-piano.toMaster();
 /*
+var piano = SampleLibrary.load({
+  instruments: "violin"
+}); */
+
+//piano.release = .5;
+//piano.toMaster();
+
 //load samples
 var samples = SampleLibrary.load({
   instruments: ['piano', 'bass-electric', 'bassoon', 'cello', 'clarinet', 'contrabass', 'flute', 'french-horn', 'guitar-acoustic', 'guitar-electric', 'guitar-nylon', 'harmonium', 'harp', 'organ', 'saxophone', 'trombone', 'trumpet', 'tuba', 'violin', 'xylophone'],
   baseUrl: "./samples/"
-})*/
+})
 
+window.onload = function () {
+  for (var property in samples) {
+    if (samples.hasOwnProperty(property)) {
+      console.log(samples[property])
+      samples[property].release = .5;
+      samples[property].toMaster();
+    }
+  }
+}
 //
-/*
+
 var current;
+current = samples['piano'];
+
+
+var sampleselect = document.getElementById("SampleSelect");
+sampleselect.onchange = function () {
+  console.log(sampleselect.value);
+  current = samples[sampleselect.value];
+  //current.release = .5;
+  //current.toMaster();
+}
+//current.release = .5;
+//current.toMaster();
+
+/*
 Tone.Buffer.on('load', function () {
   // loop through instruments and set release, connect to master output
   for (var property in samples) {
@@ -98,7 +122,7 @@ function onMessage(event) {
     tmpel.classList.remove("pressed");
     //tmpel.style.display = "inline-block";
     //synth.triggerRelease(newNoteOctave, "4n", now);
-    piano.triggerRelease(newNoteOctave);
+    current.triggerRelease(newNoteOctave);
     //
     if (event.target.name === "A-Series Keyboard Keyboard" || value === 0) {
       //如果是midi out(playback) 力度大小(value)=0 而且會沒有midi off
@@ -109,7 +133,7 @@ function onMessage(event) {
     tmpel.classList.add("pressed");
 
     //synth.triggerAttack(newNoteOctave, "8n", now)
-    piano.triggerAttack(newNoteOctave);
+    current.triggerAttack(newNoteOctave);
 
 
   }
@@ -200,7 +224,7 @@ function Show_Hidden7(obj) {
 }
 
 function reset() {
-  for (let i = 21; i < 109; i++) {
+  for (let i = 48; i < 84; i++) {
     el = document.querySelector(`[data-number="${i}"]`);
     el.innerHTML = "";
   }
