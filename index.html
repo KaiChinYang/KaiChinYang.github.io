@@ -1,50 +1,341 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: 'Open Sans', sans-serif;
-  font-size:20px;
-  color: #444;
-}
+<html lang="en">
 
-a:link, a:visited {
-  color: #2D7BB6;
-  text-decoration: none;
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Piano移調教室</title>
+</head>
 
-a:active, a:hover, #reference a:hover {
-  color:#ED225D;
-  text-decoration: none;
-  padding-bottom: 0.11em;
-  border-bottom: 0.11em dashed;
-  border-bottom-color: #ED225D;
-  transition: border-bottom 30ms linear;
-}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.13/Tone.js"></script>
+<script type="text/javascript" src="https://unpkg.com/@tonejs/midi"></script>
+<script type='text/javascript' src='//www.midijs.net/lib/midi.js'></script>
+<!--<script src="https://colxi.info/midi-parser-js/src/main.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/webmidi@2.5.2"></script>
 
-#navMenu, #navMenu a {
-  font-size:23px; 
-  color: #ED225D;
-}
-</style>
-<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
-<title>Welcome to p5.play development!</title>
-<div id="navMenu">
-  <a href="examples/">Examples</a>
-  *
-  <a href="test/">Test Suite</a>
-  *
-  <a href="docs/">Reference</a>
-  *
-  <a href="https://github.com/molleindustria/p5.play/">GitHub</a>
-</div>  
-<p>Welcome to <strong>p5.play</strong> development!</p>
-<p>See the <a href="https://github.com/molleindustria/p5.play/#readme">README</a> for help on getting started.</p>
-<p>
-  Initiated by <strong>Paolo Pedercini</strong> | 
-  <a href="http://molleindustria.org/">molleindustria.org</a> |
-  <a href="https://twitter.com/molleindustria">@molleindustria</a>
-</p>
+BPM: <input id="setBPM" type="number" min="50" max="300" value="60">
+<button id="resetBPM">Reset BPM</button>
+<button id="setkey">Press key that you want!</button>
+<!-- <button id="transposekey">按下你想移到什麼調性</button> -->
+<button id="base64">Play!</button>
+<!-- <button id="stop">Stop</button> -->
+<form>
+    <select id="mySelect">
+        <option value=0>小星星</option>
+        <option value=1>王老先生有塊地</option>
+        <option value=2>小毛驢</option>
+        <option value=3>DoReMi</option>
+        <option value=4>祝你生日快樂</option>
+        <option value=5>小蜜蜂</option>
+        <option value=6>大象</option>
+        <option value=7>蝴蝶真美麗</option>
+        <option value=8>妹妹背著洋娃娃</option>
+        <option value=9>望春風</option>
+    </select>
+</form>
+
+
+
+
+
+
+<!-- <input type="file" id="filereader"> -->
+
+<body>
+    <div id="root">
+        <div id="piano"></div>
+        <div id="settings"></div>
+
+    </div>
+
+
+    <button id="reset" style="display:inline">Clear</button>
+    <button id="showcanvas" style="display:none">顯示/關閉額外提示</button>
+    <button id="showcircle" style="display:none">顯示/關閉五度圈工具</button>
+    <p id="statusbar">Support Status: </p>
+    <button id="sound">play sound</button>
+    <button id="easy" style="display:none">簡單</button>
+    <button id="medium" style="display:none">中等</button>
+    <button id="hard" style="display:none">困難</button>
+    <button id="crazy" style="display:none">瘋狂</button>
+    <button id="Ckey" style="display:none">C</button>
+    <button id="Gkey" style="display:none">G</button>
+    <button id="Dkey" style="display:none">D</button>
+    <button id="Akey" style="display:none">A</button>
+    <button id="Ekey" style="display:none">E</button>
+    <button id="Cbkey" style="display:none">Cb/B</button>
+    <button id="Gbkey" style="display:none">Gb/F#</button>
+    <button id="Dbkey" style="display:none">Db/C#</button>
+    <button id="Abkey" style="display:none">Ab</button>
+    <button id="Ebkey" style="display:none">Eb</button>
+    <button id="Bbkey" style="display:none">Bb</button>
+    <button id="Fkey" style="display:none">F</button>
+    <div id="callback"></div>
+
+    <img id="slider" src="" style=" position:absolute; width:1000px; left:300px">
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.sound.min.js"></script> -->
+    <script type='text/javascript' src="./p5.play-master/lib/p5.play.js"></script>
+
+    <script src="./main.js" type='text/javascript' data=difficulty></script>
+    <script id="abc" src="./wiwi-circleOfFifths-master/circleOfFifths.js" type='text/javascript' data='texxx'></script>
+    <script src="./MidiTone.js" type='text/javascript'></script>
+    <!--<script src="./sketch.js" type='text/javascript'></script>-->
+
+    <script language="text/Javascript">
+        // MIDIjs.get_audio_status()
+    </script>
+
+
+
+
+
+</body>
+
+<script language="JavaScript">
+    //放些全域變數 
+    var show = 0;
+    var canvasshow = 0;
+    var keynum; //0~11   C~B
+    let disableWebmidi = false;
+    let sss;
+    let disableP5Webmidi = false;
+    var BPM = 50;
+    let changeBPM = true;
+    var keytmp;
+    var aaaa = 0;
+    let keydif = 0;
+    var dataselect = 1;
+    //---------------------------
+    var resetBPM = document.getElementById("resetBPM");
+    resetBPM.onclick = function () {
+        BPM = 60;
+        divBPM.value = 60;
+        changeBPM = false;
+    }
+
+    var divBPM = document.getElementById("setBPM"); //set BPM
+    divBPM.addEventListener("change", function (event) {
+        //if (event.keyCode === 13) {
+        event.preventDefault();
+        //alert("You set BPM = " + divBPM.value);
+        BPM = divBPM.value;
+        changeBPM = true;
+        //}
+    });
+
+    /*var divtransposekey = document.getElementById("transposekey");
+    divtransposekey.onclick = function () {
+        alert("請按下你要移調到哪個key");
+        WebMidi.disable();
+        WebMidi.enable(function (err) { //listen midi keyboard input 
+ 
+            if (err) {
+                console.log("WebMidi could not be enabled.", err);
+            } else {
+                console.log("WebMidi enabled!");
+            }
+            var input = WebMidi.getInputByName("A-Series Keyboard Keyboard");
+            input.addListener('noteon', "all",
+                function (e) {
+                    console.log("Received 'noteon' message (" + e.note.name + e.note.octave + ").");
+                    aaaa = e.note.number % 12;
+                    alert("You transpose to " + e.note.name);
+                    WebMidi.disable();
+                }
+            );
+ 
+        });
+    }*/
+    var imgArray = ["./pic/簡譜/小星星簡譜.png", "./pic/簡譜/王老先生有塊地簡譜.png", "./pic/簡譜/小毛驢簡譜.png", "./pic/簡譜/DoReMi簡譜.png",
+        "./pic/簡譜/祝你生日快樂簡譜.png", "./pic/簡譜/小蜜蜂簡譜.png", "./pic/簡譜/大象簡譜.png", "./pic/簡譜/蝴蝶真美麗簡譜.png",
+        "./pic/簡譜/妹妹背著洋娃娃簡譜.png", "./pic/簡譜/望春風簡譜.png"];
+    var curIndex = 0, imgDuration = 3000;
+
+    var selectmenu = document.getElementById("mySelect");           //選歌曲
+    var showNotation = document.getElementById("slider");
+    selectmenu.onchange = function () {
+        var chosenoption = this.options[this.selectedIndex] //this refers to "selectmenu"
+        if (chosenoption.value != "nothing") {
+            //alert(chosenoption.value);
+            dataselect = chosenoption.value;
+            curIndex = chosenoption.value;
+        }
+
+        showNotation.className += "fadeOut";
+        setTimeout(function () {
+            showNotation.src = imgArray[curIndex];
+            showNotation.className = "";
+        }, 1000);
+
+
+    }
+</script>
+
+<script type="module" language="JavaScript">
+    // ES6
+    ///import MidiParser from 'midi-parser-js'
+    import { MidiParser } from './midi-parser-js-master/src/midi-parser.js';
+
+    // select the INPUT element that will handle
+    // the file selection.
+    ///let source = document.getElementById('filereader');
+
+    var data_1 = "TVRoZAAAAAYAAQABAeBNVHJrAAABYwD/AwZQaWFubwAA/1gEBAIYCAD/WQIAAAD/UQMHoSAAsHkAAMAAALAHZAAKQABbAABdAAD/IQEAAJA8UINHPAAZPFCDRzwAGUNQg0dDABlDUINHQwAZRVCDR0UAGUVQg0dFABlDUIcPQwAxQVCDR0EAGUFQg0dBABlAUINHQAAZQFCDR0AAGT5Qg0c+ABk+UINHPgAZPFCHDzwAMUNQg0dDABlDUINHQwAZQVCDR0EAGUFQg0dBABlAUINHQAAZQFCDR0AAGT5Qhw8+ADFDUINHQwAZQ1CDR0MAGUFQg0dBABlBUINHQQAZQFCDR0AAGUBQg0dAABk+UIcPPgAxPFCDRzwAGTxQg0c8ABlDUINHQwAZQ1CDR0MAGUVQg0dFABlFUINHRQAZQ1CHD0MAMUFQg0dBABlBUINHQQAZQFCDR0AAGUBQg0dAABk+UINHPgAZPlCDRz4AGTxQhw88AAH/LwA=";    // 小星星
+    var data_2 = "TVRoZAAAAAYAAQABAeBNVHJrAAABpwD/AwZQaWFubwAA/1gEBAIYCAD/WQL/AAD/UQMHoSAAsHkAAMAAALAHZAAKQABbAABdAAD/IQEAAJBBUIFjQQANQVCBY0EADUFQgWNBAA08UIFjPAANPlCBYz4ADT5QgWM+AA08UINHPAAZRVCBY0UADUVQgWNFAA1DUIFjQwANQ1CBY0MADUFQhw9BADFBUIFjQQANQVCBY0EADUFQgWNBAA08UIFjPAANPlCBYz4ADT5QgWM+AA08UINHPAAZRVCBY0UADUVQgWNFAA1DUIFjQwANQ1CBY0MADUFQhw9BADFBUIFjQQANQVCBY0EADUFQgWNBAIF9QVCBY0EADUFQgWNBAA1BUIFjQQCBfUFQcUEAB0FQcUEAB0FQcUEAB0FQcUEAB0FQgWNBAA1BUIFjQQANQVCBY0EADUFQgWNBAA1BUIFjQQANQVCBY0EADUFQgWNBAA1BUIFjQQANQVCBY0EADTxQgWM8AA0+UIFjPgANPlCBYz4ADTxQg0c8ABlFUIFjRQANRVCBY0UADUNQgWNDAA1DUIFjQwANQVCHD0EAAf8vAA=="; //王老先生有塊地
+    var data_3 = "TVRoZAAAAAYAAQABAeBNVHJrAAABuwD/AwZQaWFubwAA/1gEAgIYCAD/WQIAAAD/UQMHoSAAsHkAAMAAALAHZAAKQABbAABdAAD/IQEAAJA8UIFjPAANPFCBYzwADTxQgWM8AA1AUIFjQAANQ1CBY0MADUNQgWNDAA1DUIFjQwANQ1CBY0MADUVQgWNFAA1FUIFjRQANRVCBY0UADUhQgWNIAA1DUIcPQwAxQVCBY0EADUFQgWNBAA1BUIFjQQANRVCBY0UADUBQgWNAAA1AUIFjQAANQFCBY0AADUBQgWNAAA0+UIFjPgANPlCBYz4ADT5QgWM+AA0+UIFjPgANQ1CDR0MAgglDUIFjQwANPFCBYzwADTxQgWM8AA08UIFjPAANQFCBY0AADUNQgWNDAA1DUIFjQwANQ1CBY0MADUNQgWNDAA1FUIFjRQANRVCBY0UADUVQgWNFAA1IUIFjSAANQ1CHD0MAMUFQgWNBAA1BUIFjQQANQVCBY0EADUVQgWNFAA1AUHFAAAdAUHFAAAdAUHFAAAdAUHFAAAdAUIFjQAANQFCBY0AADT5QgWM+AA0+UIFjPgANPlCBYz4ADUBQgWNAAA08UIcPPAAB/y8A";    //小毛驢
+    var data_4 = "TVRoZAAAAAYAAQABAeBNVHJrAAABxQD/AwZQaWFubwAA/1gEBAIYCAD/WQIAAAD/UQMHoSAAsHkAAMAAALAHZAAKQABbAABdAAD/IQEAAJA8UIUrPAAlPlCBYz4ADUBQhStAACU8UIFjPAANQFCDR0AAGTxQg0c8ABlAUIcPQAAxPlCFKz4AJUBQgWNAAA1BUIFjQQANQVCBY0EADUBQgWNAAA0+UIFjPgANQVCOH0EAYUBQhStAACVBUIFjQQANQ1CFK0MAJUBQgWNAAA1DUINHQwAZQFCDR0AAGUNQhw9DADFBUIUrQQAlQ1CBY0MADUVQgWNFAA1FUIFjRQANQ1CBY0MADUFQgWNBAA1FUI4fRQBhQ1CFK0MAJTxQgWM8AA0+UIFjPgANQFCBY0AADUFQgWNBAA1DUIFjQwANRVCOH0UAYUVQhStFACU+UIFjPgANQFCBY0AADUFQgWNBAA1DUIFjQwANRVCBY0UADUdQjh9HAGFHUIUrRwAlQFCBY0AADUFQgWNBAA1DUIFjQwANRVCBY0UADUdQgWNHAA1IUIpXSABJSFCBY0gADUdQgWNHAA1FUINHRQAZQVCDR0EAGUdQg0dHABlDUINHQwAZSFCOH0gAAf8vAA==";    //RoReMi
+    var data_5 = "TVRoZAAAAAYAAQABAeBNVHJrAAAA/gD/AwZQaWFubwAA/1gEAwIYCAD/WQL/AAD/UQMHoSAAsHkAAMAAALAHZAAKQABbAABdAAD/IQEAAJA8UIFjPAANPFCBYzwADT5Qg0c+ABk8UINHPAAZQVCDR0EAGUBQhw9AADE8UIFjPAANPFCBYzwADT5Qg0c+ABk8UINHPAAZQ1CDR0MAGUFQhw9BADE8UIFjPAANPFCBYzwADUhQg0dIABlFUINHRQAZ/1gEBAIYCACQQVCDR0EAGUBQg19AAAE+UIcPPgAx/1gEAwIYCACQRlCBY0YADUZQgWNGAA1FUINHRQAZQVCDR0EAGUNQg0dDABlBUIcPQQAB/y8A";    // 祝你生日快樂
+    var data_6 = "TVRoZAAAAAYAAQABAeBNVHJrAAABlAD/AwZQaWFubwAA/1gEAgIYCAD/WQIAAAD/UQMHoSAAsHkAAMAAALAHZAAKQABbAABdAAD/IQEAAJBDUIFjQwANQFCBY0AADUBQg0dAABlBUIFjQQANPlCBYz4ADT5Qg0c+ABk8UIFjPAANPlCBYz4ADUBQgWNAAA1BUIFjQQANQ1CBY0MADUNQgWNDAA1DUINHQwAZQ1CBY0MADUBQgWNAAA1AUINHQAAZQVCBY0EADT5QgWM+AA0+UINHPgAZPFCBYzwADUBQgWNAAA1DUIFjQwANQ1CBY0MADUBQhw9AADE+UIFjPgANPlCBYz4ADT5QgWM+AA0+UIFjPgANPlCBYz4ADUBQgWNAAA1BUINHQQAZQFCBY0AADUBQgWNAAA1AUIFjQAANQFCBY0AADUBQgWNAAA1BUIFjQQANQ1CDR0MAGUNQgWNDAA1AUIFjQAANQFCDR0AAGUFQgWNBAA0+UIFjPgANPlCDRz4AGTxQgWM8AA1AUIFjQAANQ1CBY0MADUNQgWNDAA08UIcPPAAB/y8A";    //小蜜蜂
+    var data_7 = "TVRoZAAAAAYAAQABAeBNVHJrAAAA+gD/AwZQaWFubwAA/1gEAwIYCAD/WQL/AAD/UQMHoSAAsHkAAMAAALAHZAAKQABbAABdAAD/IQEAAJBBUIVPQQABPlCBYz4ADTxQg0c8ABlBUIVPQQABPlCBYz4ADTxQg0c8ABlBUIUrQQAlQ1CBY0MADUVQgWNFAA1IUIFjSAANRVCBY0UADUVQgWNFAA1DUIFjQwANQVCBY0EADUNQg0dDABlIUINHSAAZSFCDR0gAGUVQg0dFABlKUIFvSgABSFCBY0gADUVQg0dFABlBUINHQQAZQ1CFK0MAJUVQgWNFAA0+UIFvPgABPFCBYzwADUFQildBAAH/LwA=";    //  大象
+    var data_8 = "TVRoZAAAAAYAAQABAeBNVHJrAAABRwD/AwZQaWFubwAA/1gEBAIYCAD/WQIAAAD/UQMHoSAAsHkAAMAAALAHZAAKQABbAABdAAD/IQEAAJA8UINHPAAZPFCBbzwAAT5QgWM+AA1AUINHQAAZQFCDR0AAGT5QgWM+AA08UIFjPAANPlCBYz4ADUBQgWNAAA08UIcPPAAxQFCDR0AAGUBQgW9AAAFBUIFjQQANQ1CDR0MAGUNQg0dDABlBUIFjQQANQFCBY0AADUFQgWNBAA1DUIFjQwANQFCHD0AAMUhQg0dIABlHUIFvRwABRVCBY0UADUNQg0dDABlAUINHQAAZSFCDR0gAGUdQgW9HAAFFUIFjRQANQ1CHD0MAMUVQg0dFABlHUIFvRwABSFCBY0gADUNQg0dDABlAUINHQAAZQ1CDR0MAGUFQgW9BAAE+UIFjPgANPFCHDzwAAf8vAA==";    //蝴蝶真美麗
+    var data_9 = "TVRoZAAAAAYAAQABAeBNVHJrAAABAQD/AwZQaWFubwAA/1gEBAIYCAD/WQIAAAD/UQMHoSAAsHkAAMAAALAHZAAKQABbAABdAAD/IQEAAJBDUIUrQwAlQ1CBY0MADUBQg0dAABk+UINHPgAZQFCDR0AAGT5Qg0c+ABk8UIcPPAAxQFCFK0AAJT5QgWM+AA08UINHPAAZOVCDRzkAGTdQg0c3ABk5UINHOQAZN1CHDzcAMTlQhSs5ACU5UIFjOQANPFCDRzwAGTlQg0c5ABk8UINHPAAZPlCDRz4AGUBQhw9AADE+UIUrPgAlPlCBYz4ADUNQg0dDABlDUINHQwAZPlCDRz4AGUBQg0dAABk8UIcPPAAB/y8A";    //妹妹背著洋娃娃
+    var data_10 = "TVRoZAAAAAYAAQABAeBNVHJrAAAB1gD/AwZQaWFubwAA/1gEBAIYCAD/WQL/AAD/UQMHoSAAsHkAAMAAALAHZAAKQABbAABdAAD/IQEAAJA8UIUrPAAlPFCBYzwADT5Qg0c+ABlBUINHQQAZQ1CDR0MAGUFQgW9BAAFDUIFjQwANRVCHD0UAMUhQhStIACVFUIFjRQANRVCBb0UAAUNQgWNDAA1BUINHQQAZQ1COH0MAYUVQhStFACVIUIFjSAANSFCDR0gAGUVQgWNFAA1IUIFjSAANQVCFT0EAAUNQgWNDAA1DUIcPQwAxPFCFKzwAJUVQgWNFAA1FUINHRQAZQ1BxQwAHQVBxQQAHQ1CBY0MADUFQjh9BAGFDUIUrQwAlQ1CBY0MADUVQg0dFABlDUIFvQwABQVCBY0EADT5Qg0c+ABk8UIFvPAABPlCBYz4ADUFQhw9BADE+UIUrPgAlQVCBY0EADUNQg0dDABlFUINHRQAZSFCOH0gAYUhQhStIACVIUIFjSAANSlCDR0oAGUhQgW9IAAFFUIFjRQANRVCDR0UAGUNQgW9DAAFBUIFjQQANPlCHDz4AMTxQhSs8ACVFUIFjRQANRVCDR0UAGUNQd0MAAUFQd0EAAUNQgWNDAA1BUI4fQQAB/y8A";   //望春風
+
+    var buttonBase64 = document.getElementById("base64");
+
+    buttonBase64.onclick = function () {
+        // provide the File source
+        var obj = MidiParser.parse(data_1);
+        switch (dataselect) {
+            case "0": obj = MidiParser.parse(data_1); break;
+            case "1": obj = MidiParser.parse(data_2); break;
+            case "2": obj = MidiParser.parse(data_3); break;
+            case "3": obj = MidiParser.parse(data_4); break;
+            case "4": obj = MidiParser.parse(data_5); break;
+            case "5": obj = MidiParser.parse(data_6); break;
+            case "6": obj = MidiParser.parse(data_7); break;
+            case "7": obj = MidiParser.parse(data_8); break;
+            case "8": obj = MidiParser.parse(data_9); break;
+            case "9": obj = MidiParser.parse(data_10); break;
+        }
+        //var obj = MidiParser.parse(data_10);
+        //console.log(midiarray.track[0].event[12].data);
+
+        //MidiParser.parse(source, function (obj) {         //before written
+        var MidiTime = 0;
+        var keysig;
+
+        WebMidi.disable();
+        if (disableWebmidi === true) {
+            WebMidi.disable();
+        }
+        WebMidi.enable(function (err) {
+            var bpmNum = 1; //bpm120 =1
+            if (err) { alert("Browser do not support!!") }
+            else {
+                //disableWebmidi = true;
+                console.log("File Webmidi start");
+                var output = WebMidi.getOutputByName(" my_midi");
+                for (let i = 0; i < obj.track[0].event.length - 1; i++) {
+                    //console.log(i + "{" + "deltatime:" + obj.track[0].event[i].deltaTime + "--" + obj.track[0].event[i].data[0] + "," + obj.track[0].event[i].data[1] + "}");
+                    if (i === 3) {
+                        bpmNum = obj.track[0].event[i].data / 500000;   //ex. bpm60: bpmNum=2 data=1000000
+                        console.log("bpmNum: " + bpmNum);
+                    }
+                    if (changeBPM === true) bpmNum = 1 * (120 / BPM);   //BPM change
+                    if (obj.track[0].event[i].metaType === 89) {        //MIDI files key signature
+                        var num16;
+                        num16 = obj.track[0].event[i].data.toString(16);
+                        switch (num16) {
+                            case '0':
+                                keytmp = 0; break;
+                            case '256':
+                                keytmp = 7; break;
+                            case '512':
+                                keytmp = 2; break;
+                            case '768':
+                                keytmp = 9; break;
+                            case '1024':
+                                keytmp = 4; break;
+                            case '1280':
+                                keytmp = 11; break;
+                            case '1536':
+                                keytmp = 6; break;
+                            case 'ff00':
+                                keytmp = 5; break;
+                            case 'fe00':
+                                keytmp = 10; break;
+                            case 'fd00':
+                                keytmp = 3; break;
+                            case 'fc00':
+                                keytmp = 8; break;
+                            case 'fb00':
+                                keytmp = 1; break;
+                            case 'fa00':
+                                keytmp = 6; break;
+                            case 'f900':
+                                keytmp = 11; break;
+                        }
+                        keydif = aaaa - keytmp;
+
+                    }
+
+                    if (obj.track[0].event[i].type === 9) {     //start send MIDI
+                        if (disableWebmidi === true) {
+                            WebMidi.disable();
+                        }
+
+                        MidiTime = MidiTime + (obj.track[0].event[i].deltaTime * bpmNum);
+
+                        if (obj.track[0].event[i].data[1] != 0) {  //noteOff
+                            //console.log(MidiTime);
+                            let ccc = parseInt(obj.track[0].event[i].data[0] + keydif);
+                            output.playNote(ccc, 1, {
+                                duration: obj.track[0].event[i + 1].deltaTime * bpmNum,
+                                time: WebMidi.time + MidiTime
+                            });
+
+
+                        }
+                        /*else {   //noteOn
+                            WebMidi.enable(function (err) {
+                                if (err) { }
+                                else {
+                                    disableWebmidi = true;
+                                    var output = WebMidi.getOutputByName(" my_midi");
+                                    // output.playNote(obj.track[0].event[i].data[0], 1, { velocity: obj.track[0].event[i].data[1], time: WebMidi.time + MidiTime });
+                                    //output.playNote("E4", 1, { duration: 2000, velocity: 0.75, time: WebMidi.time + 1000 });
+                                }
+                            });
+                        }*/
+                    }//send midi end
+
+                }
+                var input = WebMidi.getInputByName("A-Series Keyboard Keyboard");
+                input.addListener('noteon', "all",
+                    function (e) {
+                        console.log("Received 'noteon' message (" + e.note.name + e.note.octave + ").");
+                        console.log(e.note);
+                        for (var i = 0; i < allSprites.length; i++) {
+                            var mySprite = allSprites[i];
+
+                            //even if they are out of the canvas, sprites keep getting updated
+                            //consuming precious memory
+                            //use Sprite.remove() to remove a sprite from the sketch
+                            if (e.note.number === 60) {
+                                mySprite.remove();
+
+                            }
+                        }
+                    }
+                );
+            }   //end
+        });
+
+
+        /*for (let i = 0; i < obj.track[0].event.length - 1; i++) {
+            console.log(obj.track[0].event[i].data[0] + "velocity:" + obj.track[0].event[i].data[1] + "xTime:" + obj.track[0].event[i].deltaTime);
+        }*/
+        //----------------------------------------------
+        console.log(obj);
+        sss = obj;
+        //});
+    }
+</script>
+
+</html>
