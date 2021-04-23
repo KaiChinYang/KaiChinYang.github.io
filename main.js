@@ -133,7 +133,8 @@ function onMessage(event) {
     tmpel.classList.add("pressed");
 
     //synth.triggerAttack(newNoteOctave, "8n", now)
-    current.triggerAttack(newNoteOctave);
+    //current.volume.value = value / 127 * 10; //fail
+    current.triggerAttack(newNoteOctave, current.currentTime, value / 127); //note,time,velocity
 
 
   }
