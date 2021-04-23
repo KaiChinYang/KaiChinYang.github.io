@@ -89,7 +89,7 @@ div {
 } */
 
 div.pressed {
-  background-color:  #0000ff;
+  background-color:  #b3ffff;
   z-index: 1;
 }
 
