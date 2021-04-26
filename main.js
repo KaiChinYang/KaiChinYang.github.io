@@ -28,7 +28,7 @@ window.onload = function () {
   for (var property in samples) {
     if (samples.hasOwnProperty(property)) {
       console.log(samples[property])
-      samples[property].release = .5;
+      //samples[property].release = .5;
       samples[property].toMaster();
     }
   }
@@ -119,7 +119,9 @@ function onMessage(event) {
   // reference https://github.com/mikaeljorhult/midi-events/blob/master/src/main.js
   if (channel < 144 || value === 0) {
     // note off
-    tmpel.classList.remove("pressed");
+    if (number >= 48 && number < 84) {
+      tmpel.classList.remove("pressed");
+    }
     //tmpel.style.display = "inline-block";
     //synth.triggerRelease(newNoteOctave, "4n", now);
     current.triggerRelease(newNoteOctave);
@@ -130,7 +132,9 @@ function onMessage(event) {
   } else if (channel < 160) {
     // note on
     //tmpel.style.display = "none";
-    tmpel.classList.add("pressed");
+    if (number >= 48 && number < 84) {
+      tmpel.classList.add("pressed");
+    }
 
     //synth.triggerAttack(newNoteOctave, "8n", now)
     //current.volume.value = value / 127 * 10; //fail
