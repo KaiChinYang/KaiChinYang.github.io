@@ -142,6 +142,7 @@ function setup() {  //p5 init
   print(windowWidth, windowHeight);
   lockButton = createButton('[已鎖定]');
   lockButton.style('position', 'relative');
+  lockButton.style('display', 'none');
   lockButton.mousePressed(toggleLocked);
 
   /*setToneButton = createButton("顯示視覺輔助");
@@ -178,11 +179,11 @@ function setup() {  //p5 init
   minorTextSize = width * 0.02125;
   detailTextSize = width * 0.0275;
 
-  sel = createSelect();
+  /*sel = createSelect();
   sel.style('font-size', '16px');
   sel.style("position", 'relative');
   sel.style('left', '5px');
-  sel.style('z-index', '3');
+  //sel.style('z-index', '3');
   //sel.position(140, 183);
   sel.option('全顯示');
   sel.option('顯示較少');
@@ -190,6 +191,7 @@ function setup() {  //p5 init
   sel.option('根音Only');
   sel.selected('全顯示');
   sel.changed(doSelectThing);
+  */
 
   /*
     normalButton = createButton("簡單");
@@ -210,9 +212,13 @@ function setup() {  //p5 init
   */
 }
 
-function doSelectThing() {
-
-  let item = sel.value();
+var selectthing = document.getElementById("doSelectThing");
+selectthing.onchange = function () {
+  var chose = this.options[this.selectedIndex];
+  if (chose.value != "nothing") {
+    //alert(chose.value);
+  }
+  let item = chose.value;
   if (item === "全顯示") {
     reset(); difficult = 0;
     switch (keynum) {
@@ -296,7 +302,7 @@ function doSelectThing() {
 
     }
   }
-  if (item === "只有 1＆5") {
+  if (item === "只顯示 1 & 5") {
     reset(); difficult = 10;
     switch (keynum) {
       case 0:
@@ -337,7 +343,7 @@ function doSelectThing() {
         break;
     }
   }
-  if (item === "根音Only") {
+  if (item === "只有根音") {
     reset(); difficult = 100;
     switch (keynum) {
       case 0:
