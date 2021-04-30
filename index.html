@@ -15,73 +15,28 @@
 <!--<script src="https://colxi.info/midi-parser-js/src/main.js"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/webmidi@2.5.2"></script>
 
-<font>BPM:</font> <input id="setBPM" type="number" min="50" max="300" value="60">
-<button id="resetBPM">Reset BPM</button>
-<button id="setkey">Press key that you want!</button>
 <!-- <button id="transposekey">按下你想移到什麼調性</button> -->
-<button id="base64">Play!</button>
-<font id="selecttext"></font>
+
+<font id="selecttext" style="position:absolute; top:10px; left:10px; z-index:1;"></font>
+<button id="stopall" style="display:none">test</button>
+
 <!-- <button id="stop">Stop</button> -->
-<form>
-    <select id="mySelect">
-        <option value=-1>樂譜列表</option>
-        <option value=10>音階練習</option>
-        <option value=0>小星星</option>
-        <option value=1>王老先生有塊地</option>
-        <option value=2>小毛驢</option>
-        <option value=3>DoReMi</option>
-        <option value=4>祝你生日快樂</option>
-        <option value=5>小蜜蜂</option>
-        <option value=6>大象</option>
-        <option value=7>蝴蝶真美麗</option>
-        <option value=8>妹妹背著洋娃娃</option>
-        <option value=9>望春風</option>
-    </select>
-</form>
-
-<form>
-    <select id="SampleSelect">
-        <option value='piano'>Piano 鋼琴</option>
-        <option value='bass-electric'>Bass-Electric 電子低音</option>
-        <option value='bassoon'>Bassoon 巴松管</option>
-        <option value='cello'>Cello 大提琴</option>
-        <option value='clarinet'>Clarinet 單簧管</option>
-        <option value='contrabass'>Contrabass 低音提琴</option>
-        <option value='flute'>Flute 長笛</option>
-        <option value='french-horn'>French-Horn 法國號</option>
-        <option value='guitar-acoustic'>Guitar-Acoustic 原聲吉他</option>
-        <option value='guitar-electric'>Guitar-Electric 電吉他</option>
-        <option value='guitar-nylon'>Guitar-Nylon 木吉他</option>
-        <option value='harmonium'>Harmonium 簧風琴</option>
-        <option value='harp'>Harp 豎琴</option>
-        <option value='organ'>Organ 管風琴</option>
-        <option value='saxophone'>Saxophone 薩克斯風</option>
-        <option value='trombone'>Trombone 長號</option>
-        <option value='trumpet'>Trumpet 小號</option>
-        <option value='tuba'>Tuba 低音號</option>
-        <option value='violin'>Violin 小提琴</option>
-        <option value='xylophone'>Xylophone 木琴</option>
-    </select>
-</form>
-
-
 
 <!-- <input type="file" id="filereader"> -->
 
-
 <body>
-    <div id="root">
-        <div id="piano"></div>
-        <div id="settings"></div>
 
-    </div>
-
-
-    <button id="reset" style="display:inline">Clear</button>
     <button id="showcanvas" style="display:none">顯示/關閉額外提示</button>
     <button id="showcircle" style="display:none">顯示/關閉五度圈工具</button>
     <p id="statusbar">Support Status: </p>
-    <button id="sound">Allow sound</button>
+
+
+    <img id="slider" src="" style=" position: relative; width:1000px; left:200px">
+    <div id="root">
+        <div id="piano"></div>
+        <div id="settings"></div>
+    </div>
+
     <button id="easy" style="display:none">簡單</button>
     <button id="medium" style="display:none">中等</button>
     <button id="hard" style="display:none">困難</button>
@@ -100,28 +55,111 @@
     <button id="Fkey" style="display:none">F</button>
     <div id="callback"></div>
 
-
     </div>
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
-    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.sound.min.js"></script> -->
-    <script type='text/javascript' src="./lib/p5.play.js"></script>
-    <script id="abc" src="./wiwi-circleOfFifths-master/circleOfFifths.js" type='text/javascript' data='texxx'></script>
-    <script src="./MidiTone.js" type='text/javascript'></script>
-    <!--<script src="./sketch.js" type='text/javascript'></script>-->
-    <script src="./main.js" type='text/javascript' data=difficulty></script>
-    <script language="text/Javascript">
-        // MIDIjs.get_audio_status()
-    </script>
-
-
-
-
 
 </body>
 
-<img id="slider" src="" style=" position:absolute; width:1000px; left:300px">
+<div class="dropdown">
+    <button class="dropbtn">Options</button>
+    <div class="dropdown-content">
+        <div style="text-align:center;">Options</div>
+        <br />
+        <div>
+            <h>Sound Permission: </h><button id="sound">Allow sound</button>
+        </div>
+        <br />
+        <div>
+            <font>BPM:</font> <input id="setBPM" type="number" min="50" max="300" value="60">
+            <button id="resetBPM">Reset BPM</button>
+        </div>
+        <br />
+        <div>
+            <h>Key Select: </h>
+            <button id="setkey">Press key that you want!</button>
+        </div>
+        <br />
+        <div>
+            <h>Practice Select: </h>
+            <form style="display:inline;">
+                <select id="mySelect">
+                    <option value=-1>樂譜列表</option>
+                    <option value=10>音階練習</option>
+                    <option value=0>小星星</option>
+                    <option value=1>王老先生有塊地</option>
+                    <option value=2>小毛驢</option>
+                    <option value=3>DoReMi</option>
+                    <option value=4>祝你生日快樂</option>
+                    <option value=5>小蜜蜂</option>
+                    <option value=6>大象</option>
+                    <option value=7>蝴蝶真美麗</option>
+                    <option value=8>妹妹背著洋娃娃</option>
+                    <option value=9>望春風</option>
+                </select>
+            </form>
+        </div>
+        <br />
+        <div>
+            <h style="display:inline;">Musical Instruments: </h>
+            <form style="display:inline;">
+                <select id="SampleSelect">
+                    <option value='piano'>Piano 鋼琴</option>
+                    <option value='bass-electric'>Bass-Electric 電子低音</option>
+                    <option value='bassoon'>Bassoon 巴松管</option>
+                    <option value='cello'>Cello 大提琴</option>
+                    <option value='clarinet'>Clarinet 單簧管</option>
+                    <option value='contrabass'>Contrabass 低音提琴</option>
+                    <option value='flute'>Flute 長笛</option>
+                    <option value='french-horn'>French-Horn 法國號</option>
+                    <option value='guitar-acoustic'>Guitar-Acoustic 原聲吉他</option>
+                    <option value='guitar-electric'>Guitar-Electric 電吉他</option>
+                    <option value='guitar-nylon'>Guitar-Nylon 木吉他</option>
+                    <option value='harmonium'>Harmonium 簧風琴</option>
+                    <option value='harp'>Harp 豎琴</option>
+                    <option value='organ'>Organ 管風琴</option>
+                    <option value='saxophone'>Saxophone 薩克斯風</option>
+                    <option value='trombone'>Trombone 長號</option>
+                    <option value='trumpet'>Trumpet 小號</option>
+                    <option value='tuba'>Tuba 低音號</option>
+                    <option value='violin'>Violin 小提琴</option>
+                    <option value='xylophone'>Xylophone 木琴</option>
+                </select>
+            </form>
+        </div>
+        <br />
+        <div>
+            <h>Visual Support: </h>
+            <form style="display:inline;">
+                <select id="doSelectThing">
+                    <option value="全顯示">全顯示</option>
+                    <option value="顯示較少">顯示較少</option>
+                    <option value="只顯示 1 & 5">只顯示 1 & 5</option>
+                    <option value="只有根音">只有根音</option>
+                </select>
+            </form>
+            <button id="reset" style="display:inline;">Clear</button>
+        </div>
+        <br />
+        <div>
+            <h>System demonstrate: </h>
+            <button id="base64">Play!</button>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
+<!--<script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.sound.min.js"></script> -->
+<script type='text/javascript' src="./lib/p5.play.js"></script>
+<script id="abc" src="./wiwi-circleOfFifths-master/circleOfFifths.js" type='text/javascript' data='texxx'></script>
+<script src="./MidiTone.js" type='text/javascript'></script>
+<!--<script src="./sketch.js" type='text/javascript'></script>-->
+<script src="./main.js" type='text/javascript' data=difficulty></script>
+<script language="text/Javascript">
+        // MIDIjs.get_audio_status()
+</script>
+
 <script language="JavaScript">
     //放些全域變數 
     var show = 0;
@@ -141,7 +179,7 @@
     resetBPM.onclick = function () {
         BPM = 60;
         divBPM.value = 60;
-        changeBPM = false;
+        //changeBPM = false;
     }
 
     var divBPM = document.getElementById("setBPM"); //set BPM
@@ -199,9 +237,8 @@
                 showNotation.className = "";
             }
         }, 1000);
-
-
     }
+
 </script>
 
 <script type="module" language="JavaScript">
@@ -260,9 +297,16 @@
             if (err) { alert("Browser do not support!!") }
             else {
                 //disableWebmidi = true;
+                var buttonStop = document.getElementById("stopall");
+
+
                 console.log("File Webmidi start");
                 var output = WebMidi.getOutputByName(" my_midi");
                 for (let i = 0; i < obj.track[0].event.length - 1; i++) {
+                    buttonStop.onclick = function () {
+                        alert("123");
+                        output.sendChannelMode("allnotesoff");
+                    }
                     //console.log(i + "{" + "deltatime:" + obj.track[0].event[i].deltaTime + "--" + obj.track[0].event[i].data[0] + "," + obj.track[0].event[i].data[1] + "}");
                     if (i === 3) {
                         bpmNum = obj.track[0].event[i].data / 500000;   //ex. bpm60: bpmNum=2 data=1000000
@@ -334,7 +378,7 @@
                                 }
                             });
                         }*/
-                    }//send midi end
+                    }   //send midi end
 
                 }
                 var input = WebMidi.getInputByName("A-Series Keyboard Keyboard");
@@ -356,6 +400,7 @@
                     }
                 );
             }   //end
+
         });
 
 

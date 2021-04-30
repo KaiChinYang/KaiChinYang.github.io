@@ -12,7 +12,7 @@ div {
 #root {
   position: relative;
   margin: 5px; 
-  z-index: -2;
+  bottom: 0px;
   
 }
 
@@ -24,7 +24,6 @@ div {
   position: absolute;
   display: inline-block;
   left:10px;
-  
   bottom: 0px;
 }
 
@@ -35,6 +34,8 @@ div {
 #input-selector {
   margin-top: 2em;
 }
+
+
 
 .white-keys > div:first-child {
   margin-left: calc( 275px + var(--widthWhite) - var(--widthBlack) / 2);
@@ -47,9 +48,13 @@ div {
   border: black 1px solid;
     text-align: center;
   vertical-align: top;
-  line-height: 380px;
-  z-index: 0;
+  line-height: 370px;
+  /*z-index: 0;*/
   background-color:white;
+  font-size:0.9cm;
+  /*position: absolute;
+  Top: 100px;
+  left:600px;*/
 }
 
 
@@ -65,17 +70,20 @@ div {
   display: inline-block;
   height: calc(var(--heightBlack));
   width: calc(var(--widthBlack));
+  border: black 1px solid;
   background-color: black;
   margin-left: calc(var(--widthWhite) - var(--widthBlack));
   text-align: center;
   vertical-align: top;
   line-height: 150px;
-  color: white;
-  z-index: 0;
+  color: #ff4d4d;
+  /*z-index: 0;*/
+  font-size:0.9cm;
 }
 
 .black-keys > div:first-child {
   margin-left: calc( 300px + var(--widthWhite) - var(--widthBlack) / 2);
+  margin-bottom: 100px;
 }
 
 .black-keys > div:nth-child(5n + 3),
@@ -89,7 +97,7 @@ div {
 } */
 
 div.pressed {
-  background-color:  #b3ffff;
+  background-color: #b3ffff;
   z-index: 1;
 }
 
@@ -104,4 +112,48 @@ div.support{
 
 #slider.fadeOut{
   opacity: 0;
+}
+
+/*＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊選項排版＆美化＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊*/
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top:10px;
+    right 10px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width:350px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
 }

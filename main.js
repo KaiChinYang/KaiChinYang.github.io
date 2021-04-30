@@ -201,7 +201,7 @@ function renderSettings(el, inputs) {
 //------------------------------------------------------
 function Show_Hidden1(obj) {
   if (obj.innerHTML == "1") { obj.innerHTML = ""; }
-  else { obj.innerHTML = "1"; }
+  else { obj.innerHTML = "❶"; }
 }
 function Show_Hidden2(obj) {
   if (obj.innerHTML == "2") { obj.innerHTML = ""; }
@@ -209,7 +209,7 @@ function Show_Hidden2(obj) {
 }
 function Show_Hidden3(obj) {
   if (obj.innerHTML == "3") { obj.innerHTML = ""; }
-  else { obj.innerHTML = "3"; }
+  else { obj.innerHTML = "❸"; }
 }
 function Show_Hidden4(obj) {
   if (obj.innerHTML == "4") { obj.innerHTML = ""; }
@@ -217,12 +217,13 @@ function Show_Hidden4(obj) {
 }
 function Show_Hidden5(obj) {
   if (obj.innerHTML == "5") { obj.innerHTML = ""; }
-  else { obj.innerHTML = "5"; }
+  else { obj.innerHTML = "❺"; }
 }
 function Show_Hidden6(obj) {
   if (obj.innerHTML == "6") { obj.innerHTML = ""; }
   else { obj.innerHTML = "6"; }
 }
+var st = "·";
 function Show_Hidden7(obj) {
   if (obj.innerHTML == "7") { obj.innerHTML = ""; }
   else { obj.innerHTML = "7"; }
