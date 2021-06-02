@@ -301,7 +301,8 @@
 
 
                 console.log("File Webmidi start");
-                var output = WebMidi.getOutputByName(" my_midi");
+                //var output = WebMidi.getOutputByName(" my_midi");
+                var output = WebMidi.outputs[0];
                 for (let i = 0; i < obj.track[0].event.length - 1; i++) {
                     buttonStop.onclick = function () {
                         alert("123");
@@ -381,7 +382,8 @@
                     }   //send midi end
 
                 }
-                var input = WebMidi.getInputByName("A-Series Keyboard Keyboard");
+                //var input = WebMidi.getInputByName("A-Series Keyboard Keyboard");
+                var input = WebMidi.inputs[1];
                 input.addListener('noteon', "all",
                     function (e) {
                         console.log("Received 'noteon' message (" + e.note.name + e.note.octave + ").");
