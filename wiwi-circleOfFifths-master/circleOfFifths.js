@@ -223,40 +223,40 @@ selectthing.onchange = function () {
     reset(); difficult = 0;
     switch (keynum) {
       case 0:
-        C_normal(); statustext.innerHTML = "Support Status: C大調-Ａm小調 全顯示";
+        C_normal(); statustext.innerHTML = "Support Status: C major scale-Ａm minor scale  Level 4.";
         break;
       case 1:
-        G_normal(); statustext.innerHTML = "Support Status: G大調-E小調 全顯示";
+        G_normal(); statustext.innerHTML = "Support Status: G major scale-E minor scale  Level 4.";
         break;
       case 2:
-        D_normal(); statustext.innerHTML = "Support Status: D大調-B小調 全顯示";
+        D_normal(); statustext.innerHTML = "Support Status: D major scale-B minor scale  Level 4.";
         break;
       case 3:
-        A_normal(); statustext.innerHTML = "Support Status: A大調-F#小調 全顯示";
+        A_normal(); statustext.innerHTML = "Support Status: A major scale-F# minor scale  Level 4.";
         break;
       case 4:
-        E_normal(); statustext.innerHTML = "Support Status: E大調-C#小調 全顯示";
+        E_normal(); statustext.innerHTML = "Support Status: E major scale-C# minor scale  Level 4.";
         break;
       case 5:
-        B_normal(); statustext.innerHTML = "Support Status: Cb/B大調-Ab/G#小調 全顯示";
+        B_normal(); statustext.innerHTML = "Support Status: Cb/B major scale-Ab/G# minor scale  Level 4.";
         break;
       case 6:
-        Gb_normal(); statustext.innerHTML = "Support Status: Gb/F#大調-Eb/D#小調 全顯示";
+        Gb_normal(); statustext.innerHTML = "Support Status: Gb/F# major scale-Eb/D# minor scale  Level 4.";
         break;
       case 7:
-        Db_normal(); statustext.innerHTML = "Support Status: Db/C#大調-Bb/A#小調 全顯示";
+        Db_normal(); statustext.innerHTML = "Support Status: Db/C# major scale-Bb/A# minor scale  Level 4.";
         break;
       case 8:
-        Ab_normal(); statustext.innerHTML = "Support Status: Ab大調-F小調 全顯示";
+        Ab_normal(); statustext.innerHTML = "Support Status: Ab major scale-F minor scale  Level 4.";
         break;
       case 9:
-        Eb_normal(); statustext.innerHTML = "Support Status: Eb大調-C小調 全顯示";
+        Eb_normal(); statustext.innerHTML = "Support Status: Eb major scale-C minor scale  Level 4.";
         break;
       case 10:
-        Bb_normal(); statustext.innerHTML = "Support Status: Bb大調-G小調 全顯示";
+        Bb_normal(); statustext.innerHTML = "Support Status: Bb major scale-G minor scale  Level 4.";
         break;
       case 11:
-        F_normal(); statustext.innerHTML = "Support Status: F大調-D小調 全顯示";
+        F_normal(); statustext.innerHTML = "Support Status: F major scale-D minor scale  Level 4.";
         break;
     }
   }
@@ -264,40 +264,40 @@ selectthing.onchange = function () {
     reset(); difficult = 5;
     switch (keynum) {
       case 0:
-        C_med(); statustext.innerHTML = "Support Status: C大調-Ａ小調 顯示較少";
+        C_med(); statustext.innerHTML = "Support Status: C major scale-Ａ minor scale  Level 3.";
         break;
       case 1:
-        G_med(); statustext.innerHTML = "Support Status: G大調-E小調 顯示較少";
+        G_med(); statustext.innerHTML = "Support Status: G major scale-E minor scale  Level 3.";
         break;
       case 2:
-        D_med(); statustext.innerHTML = "Support Status: D大調-B小調 顯示較少";
+        D_med(); statustext.innerHTML = "Support Status: D major scale-B minor scale  Level 3.";
         break;
       case 3:
-        A_med(); statustext.innerHTML = "Support Status: A大調-F#小調 顯示較少";
+        A_med(); statustext.innerHTML = "Support Status: A major scale-F# minor scale  Level 3.";
         break;
       case 4:
-        E_med(); statustext.innerHTML = "Support Status: E大調-C#小調 顯示較少";
+        E_med(); statustext.innerHTML = "Support Status: E major scale-C# minor scale  Level 3.";
         break;
       case 5:
-        B_med(); statustext.innerHTML = "Support Status: Cb/B大調-Ab/G#小調 顯示較少";
+        B_med(); statustext.innerHTML = "Support Status: Cb/B major scale-Ab/G# minor scale  Level 3.";
         break;
       case 6:
-        Gb_med(); statustext.innerHTML = "Support Status: Gb/F#大調-Eb/D#小調 顯示較少";
+        Gb_med(); statustext.innerHTML = "Support Status: Gb/F# major scale-Eb/D# minor scale  Level 3.";
         break;
       case 7:
-        Db_med(); statustext.innerHTML = "Support Status: Db/C#大調-Bb/A#小調 顯示較少";
+        Db_med(); statustext.innerHTML = "Support Status: Db/C# major scale-Bb/A# minor scale  Level 3.";
         break;
       case 8:
-        Ab_med(); statustext.innerHTML = "Support Status: Ab大調-F小調 顯示較少";
+        Ab_med(); statustext.innerHTML = "Support Status: Ab major scale-F minor scale  Level 3.";
         break;
       case 9:
-        Eb_med(); statustext.innerHTML = "Support Status: Eb大調-C小調 顯示較少";
+        Eb_med(); statustext.innerHTML = "Support Status: Eb major scale-C minor scale  Level 3.";
         break;
       case 10:
-        Bb_med(); statustext.innerHTML = "Support Status: Bb大調-G小調 顯示較少";
+        Bb_med(); statustext.innerHTML = "Support Status: Bb major scale-G minor scale  Level 3.";
         break;
       case 11:
-        F_med(); statustext.innerHTML = "Support Status: F大調-D小調 顯示較少";
+        F_med(); statustext.innerHTML = "Support Status: F major scale-D minor scale  Level 3.";
         break;
 
     }
@@ -306,40 +306,40 @@ selectthing.onchange = function () {
     reset(); difficult = 10;
     switch (keynum) {
       case 0:
-        C_hard(); statustext.innerHTML = "Support Status: C大調-Ａ小調 顯示 1 & 5";
+        C_hard(); statustext.innerHTML = "Support Status: C major scale-Ａ minor scale  Level 2.";
         break;
       case 1:
-        G_hard(); statustext.innerHTML = "Support Status: G大調-E小調 顯示 1 & 5";
+        G_hard(); statustext.innerHTML = "Support Status: G major scale-E minor scale  Level 2.";
         break;
       case 2:
-        D_hard(); statustext.innerHTML = "Support Status: D大調-B小調 顯示 1 & 5";
+        D_hard(); statustext.innerHTML = "Support Status: D major scale-B minor scale  Level 2.";
         break;
       case 3:
-        A_hard(); statustext.innerHTML = "Support Status: A大調-F#小調 顯示 1 & 5";
+        A_hard(); statustext.innerHTML = "Support Status: A major scale-F# minor scale  Level 2.";
         break;
       case 4:
-        E_hard(); statustext.innerHTML = "Support Status: E大調-C#小調 顯示 1 & 5";
+        E_hard(); statustext.innerHTML = "Support Status: E major scale-C# minor scale  Level 2.";
         break;
       case 5:
-        B_hard(); statustext.innerHTML = "Support Status: Cb/B大調-Ab/G#小調 顯示 1 & 5";
+        B_hard(); statustext.innerHTML = "Support Status: Cb/B major scale-Ab/G# minor scale  Level 2.";
         break;
       case 6:
-        Gb_hard(); statustext.innerHTML = "Support Status: Gb/F#大調-Eb/D#小調 顯示 1 & 5";
+        Gb_hard(); statustext.innerHTML = "Support Status: Gb/F# major scale-Eb/D# minor scale  Level 2.";
         break;
       case 7:
-        Db_hard(); statustext.innerHTML = "Support Status: Db/C#大調-Bb/A#小調 顯示 1 & 5";
+        Db_hard(); statustext.innerHTML = "Support Status: Db/C# major scale-Bb/A# minor scale  Level 2.";
         break;
       case 8:
-        Ab_hard(); statustext.innerHTML = "Support Status: Ab大調-F小調 顯示 1 & 5";
+        Ab_hard(); statustext.innerHTML = "Support Status: Ab major scale-F minor scale  Level 2.";
         break;
       case 9:
-        Eb_hard(); statustext.innerHTML = "Support Status: Eb大調-C小調 顯示 1 & 5";
+        Eb_hard(); statustext.innerHTML = "Support Status: Eb major scale-C minor scale  Level 2.";
         break;
       case 10:
-        Bb_hard(); statustext.innerHTML = "Support Status: Bb大調-G小調 顯示 1 & 5";
+        Bb_hard(); statustext.innerHTML = "Support Status: Bb major scale-G minor scale  Level 2.";
         break;
       case 11:
-        F_hard(); statustext.innerHTML = "Support Status: F大調-D小調 顯示 1 & 5";
+        F_hard(); statustext.innerHTML = "Support Status: F major scale-D minor scale  Level 2.";
         break;
     }
   }
@@ -347,40 +347,40 @@ selectthing.onchange = function () {
     reset(); difficult = 100;
     switch (keynum) {
       case 0:
-        C_crazy(); statustext.innerHTML = "Support Status: C大調-Ａ小調 根音Only";
+        C_crazy(); statustext.innerHTML = "Support Status: C major scale-Ａ minor scale  Level 1.";
         break;
       case 1:
-        G_crazy(); statustext.innerHTML = "Support Status: G大調-E小調 根音Only";
+        G_crazy(); statustext.innerHTML = "Support Status: G major scale-E minor scale  Level 1.";
         break;
       case 2:
-        D_crazy(); statustext.innerHTML = "Support Status: D大調-B小調 根音Only";
+        D_crazy(); statustext.innerHTML = "Support Status: D major scale-B minor scale  Level 1.";
         break;
       case 3:
-        A_crazy(); statustext.innerHTML = "Support Status: A大調-F#小調 根音Only";
+        A_crazy(); statustext.innerHTML = "Support Status: A major scale-F# minor scale  Level 1.";
         break;
       case 4:
-        E_crazy(); statustext.innerHTML = "Support Status: E大調-C#小調 根音Only";
+        E_crazy(); statustext.innerHTML = "Support Status: E major scale-C# minor scale  Level 1.";
         break;
       case 5:
-        B_crazy(); statustext.innerHTML = "Support Status: Cb/B大調-Ab/G#小調 根音Only";
+        B_crazy(); statustext.innerHTML = "Support Status: Cb/B major scale-Ab/G# minor scale  Level 1.";
         break;
       case 6:
-        Gb_crazy(); statustext.innerHTML = "Support Status: Gb/F#大調-Eb/D#小調 根音Only";
+        Gb_crazy(); statustext.innerHTML = "Support Status: Gb/F# major scale-Eb/D# minor scale  Level 1.";
         break;
       case 7:
-        Db_crazy(); statustext.innerHTML = "Support Status: Db/C#大調-Bb/A#小調 根音Only";
+        Db_crazy(); statustext.innerHTML = "Support Status: Db/C# major scale-Bb/A# minor scale  Level 1.";
         break;
       case 8:
-        Ab_crazy(); statustext.innerHTML = "Support Status: Ab大調-F小調 根音Only";
+        Ab_crazy(); statustext.innerHTML = "Support Status: Ab major scale-F minor scale  Level 1.";
         break;
       case 9:
-        Eb_crazy(); statustext.innerHTML = "Support Status: Eb大調-C小調 根音Only";
+        Eb_crazy(); statustext.innerHTML = "Support Status: Eb major scale-C minor scale  Level 1.";
         break;
       case 10:
-        Bb_crazy(); statustext.innerHTML = "Support Status: Bb大調-G小調 根音Only";
+        Bb_crazy(); statustext.innerHTML = "Support Status: Bb major scale-G minor scale  Level 1.";
         break;
       case 11:
-        F_crazy(); statustext.innerHTML = "Support Status: F大調-D小調 根音Only";
+        F_crazy(); statustext.innerHTML = "Support Status: F major scale-D minor scale  Level 1.";
         break;
     }
   }
@@ -466,121 +466,121 @@ buttonSetkey.onclick = function () {
         if (tmpkeynum === 0) {  //C
           reset();
           keynum = 0;
-          selecttext.innerHTML = "Key Status now : C大調-Ａ小調";
-          if (difficult === 0) { C_normal(); statustext.innerHTML = "Support Status: C大調-Ａ小調 全顯示"; }
-          if (difficult === 5) { C_med(); statustext.innerHTML = "Support Status: C大調-Ａ小調 顯示較少"; }
-          if (difficult === 10) { C_hard(); statustext.innerHTML = "Support Status: C大調-Ａ小調 顯示 1 & 5"; }
-          if (difficult === 100) { C_crazy(); statustext.innerHTML = "Support Status: C大調-Ａ小調 根音Only"; }
+          selecttext.innerHTML = "Key Status now : C major scale-Ａ minor scale";
+          if (difficult === 0) { C_normal(); statustext.innerHTML = "Support Status: C major scale-Ａ minor scale  Level 4."; }
+          if (difficult === 5) { C_med(); statustext.innerHTML = "Support Status: C major scale-Ａ minor scale  Level 3."; }
+          if (difficult === 10) { C_hard(); statustext.innerHTML = "Support Status: C major scale-Ａ minor scale  Level 2."; }
+          if (difficult === 100) { C_crazy(); statustext.innerHTML = "Support Status: C major scale-Ａ minor scale  Level 1."; }
           WebMidi.disable();
         }
         if (tmpkeynum === 7) {  //G
           reset();
           keynum = 1;
-          selecttext.innerHTML = "Key Status now : G大調-E小調";
-          if (difficult === 0) { G_normal(); statustext.innerHTML = "Support Status: G大調-E小調 全顯示"; }
-          if (difficult === 5) { G_med(); statustext.innerHTML = "Support Status: G大調-E小調 顯示較少"; }
-          if (difficult === 10) { G_hard(); statustext.innerHTML = "Support Status: G大調-E小調 顯示 1 & 5"; }
-          if (difficult === 100) { G_crazy(); statustext.innerHTML = "Support Status: G大調-E小調 根音Only"; }
+          selecttext.innerHTML = "Key Status now : G major scale-E minor scale";
+          if (difficult === 0) { G_normal(); statustext.innerHTML = "Support Status: G major scale-E minor scale  Level 4."; }
+          if (difficult === 5) { G_med(); statustext.innerHTML = "Support Status: G major scale-E minor scale  Level 3."; }
+          if (difficult === 10) { G_hard(); statustext.innerHTML = "Support Status: G major scale-E minor scale  Level 2."; }
+          if (difficult === 100) { G_crazy(); statustext.innerHTML = "Support Status: G major scale-E minor scale  Level 1."; }
           WebMidi.disable();
         }
         if (tmpkeynum === 2) {  //D
           reset();
           keynum = 2;
-          selecttext.innerHTML = "Key Status now : D大調-B小調";
-          if (difficult === 0) { D_normal(); statustext.innerHTML = "Support Status: D大調-B小調 全顯示"; }
-          if (difficult === 5) { D_med(); statustext.innerHTML = "Support Status: D大調-B小調 顯示較少"; }
-          if (difficult === 10) { D_hard(); statustext.innerHTML = "Support Status: D大調-B小調 顯示 1 & 5"; }
-          if (difficult === 100) { D_crazy(); statustext.innerHTML = "Support Status: D大調-B小調 根音Only"; }
+          selecttext.innerHTML = "Key Status now : D major scale-B minor scale";
+          if (difficult === 0) { D_normal(); statustext.innerHTML = "Support Status: D major scale-B minor scale  Level 4."; }
+          if (difficult === 5) { D_med(); statustext.innerHTML = "Support Status: D major scale-B minor scale  Level 3."; }
+          if (difficult === 10) { D_hard(); statustext.innerHTML = "Support Status: D major scale-B minor scale  Level 2."; }
+          if (difficult === 100) { D_crazy(); statustext.innerHTML = "Support Status: D major scale-B minor scale  Level 1."; }
           WebMidi.disable();
         }
         if (tmpkeynum === 9) {  //A
           reset();
           keynum = 3;
-          selecttext.innerHTML = "Key Status now : A大調-F#小調";
-          if (difficult === 0) { A_normal(); statustext.innerHTML = "Support Status: A大調-F#小調 全顯示"; }
-          if (difficult === 5) { A_med(); statustext.innerHTML = "Support Status: A大調-F#小調 顯示較少"; }
-          if (difficult === 10) { A_hard(); statustext.innerHTML = "Support Status: A大調-F#小調 顯示 1 & 5"; }
-          if (difficult === 100) { A_crazy(); statustext.innerHTML = "Support Status: A大調-F#小調 根音Only"; }
+          selecttext.innerHTML = "Key Status now : A major scale-F# minor scale";
+          if (difficult === 0) { A_normal(); statustext.innerHTML = "Support Status: A major scale-F# minor scale  Level 4."; }
+          if (difficult === 5) { A_med(); statustext.innerHTML = "Support Status: A major scale-F# minor scale  Level 3."; }
+          if (difficult === 10) { A_hard(); statustext.innerHTML = "Support Status: A major scale-F# minor scale  Level 2."; }
+          if (difficult === 100) { A_crazy(); statustext.innerHTML = "Support Status: A major scale-F# minor scale  Level 1."; }
           WebMidi.disable();
         }
         if (tmpkeynum === 4) {  //E
           reset();
           keynum = 4;
-          selecttext.innerHTML = "Key Status now : E大調-C#小調";
-          if (difficult === 0) { E_normal(); statustext.innerHTML = "Support Status: E大調-C#小調 全顯示"; }
-          if (difficult === 5) { E_med(); statustext.innerHTML = "Support Status: E大調-C#小調 顯示較少"; }
-          if (difficult === 10) { E_hard(); statustext.innerHTML = "Support Status: E大調-C#小調 顯示 1 & 5"; }
-          if (difficult === 100) { E_crazy(); statustext.innerHTML = "Support Status: E大調-C#小調 根音Only"; }
+          selecttext.innerHTML = "Key Status now : E major scale-C# minor scale";
+          if (difficult === 0) { E_normal(); statustext.innerHTML = "Support Status: E major scale-C# minor scale  Level 4."; }
+          if (difficult === 5) { E_med(); statustext.innerHTML = "Support Status: E major scale-C# minor scale  Level 3."; }
+          if (difficult === 10) { E_hard(); statustext.innerHTML = "Support Status: E major scale-C# minor scale  Level 2."; }
+          if (difficult === 100) { E_crazy(); statustext.innerHTML = "Support Status: E major scale-C# minor scale  Level 1."; }
           WebMidi.disable();
         }
         if (tmpkeynum === 11) {  // Cb/B
           reset();
           keynum = 5;
-          selecttext.innerHTML = "Key Status now : Cb/B大調-Ab/G#小調";
-          if (difficult === 0) { B_normal(); statustext.innerHTML = "Support Status: Cb/B大調-Ab/G#小調 全顯示"; }
-          if (difficult === 5) { B_med(); statustext.innerHTML = "Support Status: Cb/B大調-Ab/G#小調 顯示較少"; }
-          if (difficult === 10) { B_hard(); statustext.innerHTML = "Support Status: Cb/B大調-Ab/G#小調 顯示 1 & 5"; }
-          if (difficult === 100) { B_crazy(); statustext.innerHTML = "Support Status: Cb/B大調-Ab/G#小調 根音Only"; }
+          selecttext.innerHTML = "Key Status now : Cb/B major scale-Ab/G# minor scale";
+          if (difficult === 0) { B_normal(); statustext.innerHTML = "Support Status: Cb/B major scale-Ab/G# minor scale  Level 4."; }
+          if (difficult === 5) { B_med(); statustext.innerHTML = "Support Status: Cb/B major scale-Ab/G# minor scale  Level 3."; }
+          if (difficult === 10) { B_hard(); statustext.innerHTML = "Support Status: Cb/B major scale-Ab/G# minor scale  Level 2."; }
+          if (difficult === 100) { B_crazy(); statustext.innerHTML = "Support Status: Cb/B major scale-Ab/G# minor scale  Level 1."; }
           WebMidi.disable();
         }
         if (tmpkeynum === 6) {  // Gb/F#
           reset();
           keynum = 6;
-          selecttext.innerHTML = "Key Status now : Gb/F#大調-Eb/D#小調";
-          if (difficult === 0) { Gb_normal(); statustext.innerHTML = "Support Status: Gb/F#大調-Eb/D#小調 全顯示"; }
-          if (difficult === 5) { Gb_med(); statustext.innerHTML = "Support Status: Gb/F#大調-Eb/D#小調 顯示較少"; }
-          if (difficult === 10) { Gb_hard(); statustext.innerHTML = "Support Status: Gb/F#大調-Eb/D#小調 顯示 1 & 5"; }
-          if (difficult === 100) { Gb_crazy(); statustext.innerHTML = "Support Status: Gb/F#大調-Eb/D#小調 根音Only"; }
+          selecttext.innerHTML = "Key Status now : Gb/F# major scale-Eb/D# minor scale";
+          if (difficult === 0) { Gb_normal(); statustext.innerHTML = "Support Status: Gb/F# major scale-Eb/D# minor scale  Level 4."; }
+          if (difficult === 5) { Gb_med(); statustext.innerHTML = "Support Status: Gb/F# major scale-Eb/D# minor scale  Level 3."; }
+          if (difficult === 10) { Gb_hard(); statustext.innerHTML = "Support Status: Gb/F# major scale-Eb/D# minor scale  Level 2."; }
+          if (difficult === 100) { Gb_crazy(); statustext.innerHTML = "Support Status: Gb/F# major scale-Eb/D# minor scale  Level 1."; }
           WebMidi.disable();
         }
         if (tmpkeynum === 1) {  // Db/C#
           reset();
           keynum = 7;
-          selecttext.innerHTML = "Key Status now : Db/C#大調-Bb/A#小調";
-          if (difficult === 0) { Db_normal(); statustext.innerHTML = "Support Status: Db/C#大調-Bb/A#小調 全顯示"; }
-          if (difficult === 5) { Db_med(); statustext.innerHTML = "Support Status: Db/C#大調-Bb/A#小調 顯示較少"; }
-          if (difficult === 10) { Db_hard(); statustext.innerHTML = "Support Status: Db/C#大調-Bb/A#小調 顯示 1 & 5"; }
-          if (difficult === 100) { Db_crazy(); statustext.innerHTML = "Support Status: Db/C#大調-Bb/A#小調 根音Only"; }
+          selecttext.innerHTML = "Key Status now : Db/C# major scale-Bb/A# minor scale";
+          if (difficult === 0) { Db_normal(); statustext.innerHTML = "Support Status: Db/C# major scale-Bb/A# minor scale  Level 4."; }
+          if (difficult === 5) { Db_med(); statustext.innerHTML = "Support Status: Db/C# major scale-Bb/A# minor scale  Level 3."; }
+          if (difficult === 10) { Db_hard(); statustext.innerHTML = "Support Status: Db/C# major scale-Bb/A# minor scale  Level 2."; }
+          if (difficult === 100) { Db_crazy(); statustext.innerHTML = "Support Status: Db/C# major scale-Bb/A# minor scale  Level 1."; }
           WebMidi.disable();
         }
         if (tmpkeynum === 8) {  //Ab
           reset();
           keynum = 8;
-          selecttext.innerHTML = "Key Status now : Ab大調-F小調";
-          if (difficult === 0) { Ab_normal(); statustext.innerHTML = "Support Status: Ab大調-F小調 全顯示"; }
-          if (difficult === 5) { Ab_med(); statustext.innerHTML = "Support Status: Ab大調-F小調 顯示較少"; }
-          if (difficult === 10) { Ab_hard(); statustext.innerHTML = "Support Status: Ab大調-F小調 顯示 1 & 5"; }
-          if (difficult === 100) { Ab_crazy(); statustext.innerHTML = "Support Status: Ab大調-F小調 根音Only"; }
+          selecttext.innerHTML = "Key Status now : Ab major scale-F minor scale";
+          if (difficult === 0) { Ab_normal(); statustext.innerHTML = "Support Status: Ab major scale-F minor scale  Level 4."; }
+          if (difficult === 5) { Ab_med(); statustext.innerHTML = "Support Status: Ab major scale-F minor scale  Level 3."; }
+          if (difficult === 10) { Ab_hard(); statustext.innerHTML = "Support Status: Ab major scale-F minor scale  Level 2."; }
+          if (difficult === 100) { Ab_crazy(); statustext.innerHTML = "Support Status: Ab major scale-F minor scale  Level 1."; }
           WebMidi.disable();
         }
         if (tmpkeynum === 3) {  //Eb
           reset();
           keynum = 9;
-          selecttext.innerHTML = "Key Status now : Eb大調-C小調";
-          if (difficult === 0) { Eb_normal(); statustext.innerHTML = "Support Status: Eb大調-C小調 全顯示"; }
-          if (difficult === 5) { Eb_med(); statustext.innerHTML = "Support Status: Eb大調-C小調 顯示較少"; }
-          if (difficult === 10) { Eb_hard(); statustext.innerHTML = "Support Status: Eb大調-C小調 顯示 1 & 5"; }
-          if (difficult === 100) { Eb_crazy(); statustext.innerHTML = "Support Status: Eb大調-C小調 根音Only"; }
+          selecttext.innerHTML = "Key Status now : Eb major scale-C minor scale";
+          if (difficult === 0) { Eb_normal(); statustext.innerHTML = "Support Status: Eb major scale-C minor scale  Level 4."; }
+          if (difficult === 5) { Eb_med(); statustext.innerHTML = "Support Status: Eb major scale-C minor scale  Level 3."; }
+          if (difficult === 10) { Eb_hard(); statustext.innerHTML = "Support Status: Eb major scale-C minor scale  Level 2."; }
+          if (difficult === 100) { Eb_crazy(); statustext.innerHTML = "Support Status: Eb major scale-C minor scale  Level 1."; }
           WebMidi.disable();
         }
         if (tmpkeynum === 10) { //Bb
           reset();
           keynum = 10;
-          selecttext.innerHTML = "Key Status now : Bb大調-G小調";
-          if (difficult === 0) { Bb_normal(); statustext.innerHTML = "Support Status: Bb大調-G小調 全顯示"; }
-          if (difficult === 5) { Bb_med(); statustext.innerHTML = "Support Status: Bb大調-G小調 顯示較少"; }
-          if (difficult === 10) { Bb_hard(); statustext.innerHTML = "Support Status: Bb大調-G小調 顯示 1 & 5"; }
-          if (difficult === 100) { Bb_crazy(); statustext.innerHTML = "Support Status: Bb大調-G小調 根音Only"; }
+          selecttext.innerHTML = "Key Status now : Bb major scale-G minor scale";
+          if (difficult === 0) { Bb_normal(); statustext.innerHTML = "Support Status: Bb major scale-G minor scale  Level 4."; }
+          if (difficult === 5) { Bb_med(); statustext.innerHTML = "Support Status: Bb major scale-G minor scale  Level 3."; }
+          if (difficult === 10) { Bb_hard(); statustext.innerHTML = "Support Status: Bb major scale-G minor scale  Level 2."; }
+          if (difficult === 100) { Bb_crazy(); statustext.innerHTML = "Support Status: Bb major scale-G minor scale  Level 1."; }
           WebMidi.disable();
         }
         if (tmpkeynum === 5) { //F key
           reset();
           keynum = 11;
-          selecttext.innerHTML = "Key Status now : F大調-D小調";
-          if (difficult === 0) { F_normal(); statustext.innerHTML = "Support Status: F大調-D小調 全顯示"; }
-          if (difficult === 5) { F_med(); statustext.innerHTML = "Support Status: F大調-D小調 顯示較少"; }
-          if (difficult === 10) { F_hard(); statustext.innerHTML = "Support Status: F大調-D小調 顯示 1 & 5"; }
-          if (difficult === 100) { F_crazy(); statustext.innerHTML = "Support Status: F大調-D小調 根音Only"; }
+          selecttext.innerHTML = "Key Status now : F major scale-D minor scale";
+          if (difficult === 0) { F_normal(); statustext.innerHTML = "Support Status: F major scale-D minor scale  Level 4."; }
+          if (difficult === 5) { F_med(); statustext.innerHTML = "Support Status: F major scale-D minor scale  Level 3."; }
+          if (difficult === 10) { F_hard(); statustext.innerHTML = "Support Status: F major scale-D minor scale  Level 2."; }
+          if (difficult === 100) { F_crazy(); statustext.innerHTML = "Support Status: F major scale-D minor scale  Level 1."; }
           WebMidi.disable();
         }
 
