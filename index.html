@@ -17,7 +17,7 @@
 
 <!-- <button id="transposekey">按下你想移到什麼調性</button> -->
 
-<font id="selecttext" style="position:absolute; bottom:10px; left:100px; z-index:1;"></font>
+<font id="selecttext" style="position:absolute; Top:10px; left:100px; z-index:1;"></font>
 <button id="stopall" style="display:none">test</button>
 
 <!-- <button id="stop">Stop</button> -->
@@ -241,7 +241,7 @@
 
         showNotation.className += "fadeOut";        //秀簡譜
         setTimeout(function () {
-            if (curIndex != 11) {
+            if (curIndex != 11 && curIndex != -1) {
                 showNotation.src = imgArray[curIndex];
                 showNotation.className = "";
             }
