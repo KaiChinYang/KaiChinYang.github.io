@@ -17,7 +17,7 @@
 
 <!-- <button id="transposekey">按下你想移到什麼調性</button> -->
 
-<font id="selecttext" style="position:absolute; buttom:10px; left:100px; z-index:1;"></font>
+<font id="selecttext" style="position:absolute; bottom:10px; left:100px; z-index:1;"></font>
 <button id="stopall" style="display:none">test</button>
 
 <!-- <button id="stop">Stop</button> -->
@@ -91,7 +91,7 @@
             <form style="display:inline;">
                 <select id="mySelect">
                     <option value=-1>Song List</option>
-                    <option value=10>音階練習</option>
+                    <option value=11>音階練習</option>
                     <option value=0>小星星</option>
                     <option value=1>王老先生有塊地</option>
                     <option value=2>小毛驢</option>
@@ -102,6 +102,7 @@
                     <option value=7>蝴蝶真美麗</option>
                     <option value=8>妹妹背著洋娃娃</option>
                     <option value=9>望春風</option>
+                    <option value=10>小星星（小調)</option>
                 </select>
             </form>
         </div>
@@ -225,7 +226,7 @@
     }*/
     var imgArray = ["./pic/簡譜/小星星簡譜.png", "./pic/簡譜/王老先生有塊地簡譜.png", "./pic/簡譜/小毛驢簡譜.png", "./pic/簡譜/DoReMi簡譜.png",
         "./pic/簡譜/祝你生日快樂簡譜.png", "./pic/簡譜/小蜜蜂簡譜.png", "./pic/簡譜/大象簡譜.png", "./pic/簡譜/蝴蝶真美麗簡譜.png",
-        "./pic/簡譜/妹妹背著洋娃娃簡譜.png", "./pic/簡譜/望春風簡譜.png"];
+        "./pic/簡譜/妹妹背著洋娃娃簡譜.png", "./pic/簡譜/望春風簡譜.png", "./pic/簡譜/小星星小調簡譜.png"];
     var curIndex = 0, imgDuration = 3000;
 
     var selectmenu = document.getElementById("mySelect");           //選歌曲
@@ -238,9 +239,9 @@
             curIndex = chosenoption.value;
         }
 
-        showNotation.className += "fadeOut";
+        showNotation.className += "fadeOut";        //秀簡譜
         setTimeout(function () {
-            if (curIndex != 10) {
+            if (curIndex != 11) {
                 showNotation.src = imgArray[curIndex];
                 showNotation.className = "";
             }
@@ -269,6 +270,7 @@
     var data_9 = "TVRoZAAAAAYAAQABAeBNVHJrAAABAQD/AwZQaWFubwAA/1gEBAIYCAD/WQIAAAD/UQMHoSAAsHkAAMAAALAHZAAKQABbAABdAAD/IQEAAJBDUIUrQwAlQ1CBY0MADUBQg0dAABk+UINHPgAZQFCDR0AAGT5Qg0c+ABk8UIcPPAAxQFCFK0AAJT5QgWM+AA08UINHPAAZOVCDRzkAGTdQg0c3ABk5UINHOQAZN1CHDzcAMTlQhSs5ACU5UIFjOQANPFCDRzwAGTlQg0c5ABk8UINHPAAZPlCDRz4AGUBQhw9AADE+UIUrPgAlPlCBYz4ADUNQg0dDABlDUINHQwAZPlCDRz4AGUBQg0dAABk8UIcPPAAB/y8A";    //妹妹背著洋娃娃
     var data_10 = "TVRoZAAAAAYAAQABAeBNVHJrAAAB1gD/AwZQaWFubwAA/1gEBAIYCAD/WQL/AAD/UQMHoSAAsHkAAMAAALAHZAAKQABbAABdAAD/IQEAAJA8UIUrPAAlPFCBYzwADT5Qg0c+ABlBUINHQQAZQ1CDR0MAGUFQgW9BAAFDUIFjQwANRVCHD0UAMUhQhStIACVFUIFjRQANRVCBb0UAAUNQgWNDAA1BUINHQQAZQ1COH0MAYUVQhStFACVIUIFjSAANSFCDR0gAGUVQgWNFAA1IUIFjSAANQVCFT0EAAUNQgWNDAA1DUIcPQwAxPFCFKzwAJUVQgWNFAA1FUINHRQAZQ1BxQwAHQVBxQQAHQ1CBY0MADUFQjh9BAGFDUIUrQwAlQ1CBY0MADUVQg0dFABlDUIFvQwABQVCBY0EADT5Qg0c+ABk8UIFvPAABPlCBYz4ADUFQhw9BADE+UIUrPgAlQVCBY0EADUNQg0dDABlFUINHRQAZSFCOH0gAYUhQhStIACVIUIFjSAANSlCDR0oAGUhQgW9IAAFFUIFjRQANRVCDR0UAGUNQgW9DAAFBUIFjQQANPlCHDz4AMTxQhSs8ACVFUIFjRQANRVCDR0UAGUNQd0MAAUFQd0EAAUNQgWNDAA1BUI4fQQAB/y8A";   //望春風
     var data_11 = "TVRoZAAAAAYAAQABAeBNVHJrAAABFgD/AwZQaWFubwAA/1gEBAIYCAD/WQIAAAD/UQMW42AAsHkAAMAAALAHZAAKQABbAABdAAD/IQEAAJA8UINHPAAZPlCDRz4AGUBQg0dAABlBUINHQQAZQ1CDR0MAGUVQg0dFABlHUINHRwAZSFCDR0gAGUhQg0dIABlHUINHRwAZRVCDR0UAGUNQg0dDABlBUINHQQAZQFCDR0AAGT5Qg0c+ABk8UINHPAAZO1CDRzsAGTlQg0c5ABk3UINHNwAZNVCDRzUAGTRQg0c0ABkyUINHMgAZMFCDRzAAGTBQg0cwABkyUINHMgAZNFCDRzQAGTVQg0c1ABk3UINHNwAZOVCDRzkAGTtQg0c7ABk8UINHPAAB/y8A"; //爬音階
+    var data_12 = "TVRoZAAAAAYAAQABAeBNVHJrAAABYwD/AwZQaWFubwAA/1gEBAIYCAD/WQIAAAD/UQMHoSAAsHkAAMAAALAHZAAKQABbAABdAAD/IQEAAJA5UINHOQAZOVCDRzkAGUBQg0dAABlAUINHQAAZQVCDR0EAGUFQg0dBABlAUIcPQAAxPlCDRz4AGT5Qg0c+ABk8UINHPAAZPFCDRzwAGTtQg0c7ABk7UINHOwAZOVCHDzkAMUBQg0dAABlAUINHQAAZPlCDRz4AGT5Qg0c+ABk8UINHPAAZPFCDRzwAGTtQhw87ADFAUINHQAAZQFCDR0AAGT5Qg0c+ABk+UINHPgAZPFCDRzwAGTxQg0c8ABk7UIcPOwAxOVCDRzkAGTlQg0c5ABlAUINHQAAZQFCDR0AAGUFQg0dBABlBUINHQQAZQFCHD0AAMT5Qg0c+ABk+UINHPgAZPFCDRzwAGTxQg0c8ABk7UINHOwAZO1CDRzsAGTlQhw85AAH/LwA=";   //小調小星星
 
 
     var buttonBase64 = document.getElementById("base64");
@@ -287,7 +289,8 @@
             case "7": obj = MidiParser.parse(data_8); break;
             case "8": obj = MidiParser.parse(data_9); break;
             case "9": obj = MidiParser.parse(data_10); break;
-            case "10": obj = MidiParser.parse(data_11); break;
+            case "11": obj = MidiParser.parse(data_11); break;  //音階練習
+            case "10": obj = MidiParser.parse(data_12); break;  //小星星（小調）
         }
         //var obj = MidiParser.parse(data_10);
         //console.log(midiarray.track[0].event[12].data);
